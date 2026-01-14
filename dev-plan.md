@@ -43,28 +43,28 @@
 ## ⚛️ Phase 2 — Frontend Core (Next.js + React)
 
 ### 2.1 Next.js Setup
-- [ ] Initialize Next.js (App Router)
-- [ ] Enable TypeScript (strict mode)
-- [ ] Configure environment variables
-- [ ] Setup base layout (`layout.tsx`)
-- [ ] Implement global error boundary
-- [ ] Configure loading states
+- [x] Initialize Next.js (App Router)
+- [x] Enable TypeScript (strict mode)
+- [x] Configure environment variables
+- [x] Setup base layout (`layout.tsx`)
+- [x] Implement global error boundary
+- [x] Configure loading states
 
 ### 2.2 Styling (TailwindCSS)
-- [ ] Install TailwindCSS
-- [ ] Configure theme tokens (colors, fonts)
-- [ ] Create reusable UI components
-- [ ] Implement responsive layout
-- [ ] Add dark mode support
-- [ ] Apply accessibility best practices (a11y)
+- [x] Install TailwindCSS
+- [x] Configure theme tokens (colors, fonts)
+- [x] Create reusable UI components
+- [x] Implement responsive layout
+- [x] Add dark mode support
+- [x] Apply accessibility best practices (a11y)
 
 ### 2.3 React Architecture
-- [ ] Feature-based folder structure
-- [ ] Create reusable hooks
-- [ ] Implement Context API for global state
-- [ ] Implement Redux Toolkit (comparison purpose)
-- [ ] Setup TanStack Query (React Query)
-- [ ] Add error handling strategy
+- [x] Feature-based folder structure
+- [x] Create reusable hooks
+- [x] Implement Context API for global state
+- [x] Implement Redux Toolkit (comparison purpose)
+- [x] Setup TanStack Query (React Query)
+- [x] Add error handling strategy
 
 ---
 
