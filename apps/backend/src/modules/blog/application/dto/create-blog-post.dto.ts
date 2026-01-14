@@ -7,17 +7,17 @@ export class CreateBlogPostDto {
   @Field()
   @ApiProperty({ example: 'My First Blog Post' })
   @IsString()
-  title: string;
+  title!: string;
 
   @Field()
   @ApiProperty({ example: 'my-first-blog-post' })
   @IsString()
-  slug: string;
+  slug!: string;
 
   @Field()
   @ApiProperty({ example: 'Full blog content in markdown' })
   @IsString()
-  content: string;
+  content!: string;
 
   @Field({ nullable: true })
   @ApiPropertyOptional({ default: false })

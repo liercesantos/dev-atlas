@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "lint": "pnpm --recursive lint",
+    "lint": "pnpm -r --filter ./apps/* lint",
     "test": "pnpm --recursive test",
     "build": "pnpm --recursive build",
     "coverage": "pnpm --recursive test:coverage"
