@@ -6,19 +6,21 @@ jest.mock('@/components/ui/theme-toggle', () => ({
   ThemeToggle: () => <button data-testid="theme-toggle">Toggle</button>,
 }))
 
+// Mock LazyHeavyComponent to avoid act() warnings from next/dynamic
+jest.mock('@/components/ui/lazy-heavy-component', () => ({
+  LazyHeavyComponent: () => <div data-testid="lazy-heavy-component">Lazy Component</div>,
+}))
+
 describe('HomePage', () => {
   it('renders the title and welcome message', () => {
     render(<HomePage />)
 
-    // @ts-expect-error must be fixed
     expect(screen.getByText(/🚀 DevAtlas/i)).toBeInTheDocument()
-    // @ts-expect-error must be fixed
     expect(screen.getByText(/Welcome to the future of portfolio engineering/i)).toBeInTheDocument()
   })
 
   it('renders the ThemeToggle', () => {
     render(<HomePage />)
-    // @ts-expect-error must be fixed
     expect(screen.getByTestId('theme-toggle')).toBeInTheDocument()
   })
 })

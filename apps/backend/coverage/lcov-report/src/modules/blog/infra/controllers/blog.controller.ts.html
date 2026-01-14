@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/27</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>0/25</span>
             </div>
         
             
@@ -138,7 +138,16 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,6 +157,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -165,15 +177,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,8 +240,10 @@
   Param,
   Delete,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 <span class="cstat-no" title="statement not covered" >import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';</span>
+<span class="cstat-no" title="statement not covered" >import { CacheInterceptor } from '@nestjs/cache-manager';</span>
 <span class="cstat-no" title="statement not covered" >import { BlogService } from '../../application/services/blog.service';</span>
 <span class="cstat-no" title="statement not covered" >import { CreateBlogPostDto } from '../../application/dto/create-blog-post.dto';</span>
 <span class="cstat-no" title="statement not covered" >import { UpdateBlogPostDto } from '../../application/dto/update-blog-post.dto';</span>
@@ -231,6 +251,7 @@
 <span class="cstat-no" title="statement not covered" >import { Public } from '@/shared/decorators/public.decorator';</span>
 <span class="cstat-no" title="statement not covered" >import { Roles } from '@/shared/decorators/roles.decorator';</span>
 <span class="cstat-no" title="statement not covered" >import { GetUser } from '@/shared/decorators/get-user.decorator';</span>
+<span class="cstat-no" title="statement not covered" >import { CacheControl } from '@/shared/decorators/cache-control.decorator';</span>
 &nbsp;
 @ApiTags('blog')
 @Controller('blog')
@@ -238,6 +259,8 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
 <span class="fstat-no" title="function not covered" >  constructor(private readonly <span class="cstat-no" title="statement not covered" >b</span>logService: B</span>logService) {}
 &nbsp;
   @Public()
+  @UseInterceptors(CacheInterceptor)
+  @CacheControl('public, max-age=60')
   @Get()
   @ApiOperation({ summary: 'Get all blog posts with pagination and filters' })
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  findAll(</span>@Query() filter: BlogPostFilterDto) {</span>
@@ -245,6 +268,8 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
   }
 &nbsp;
   @Public()
+  @UseInterceptors(CacheInterceptor)
+  @CacheControl('public, max-age=60')
   @Get(':id')
   @ApiOperation({ summary: 'Get a blog post by ID' })
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  findOne(</span>@Param('id') id: string) {</span>
@@ -252,6 +277,8 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
   }
 &nbsp;
   @Public()
+  @UseInterceptors(CacheInterceptor)
+  @CacheControl('public, max-age=60')
   @Get('slug/:slug')
   @ApiOperation({ summary: 'Get a blog post by slug' })
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  findBySlug(</span>@Param('slug') slug: string) {</span>
@@ -295,7 +322,7 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-14T22:30:46.558Z
+                at 2026-01-14T23:27:40.567Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

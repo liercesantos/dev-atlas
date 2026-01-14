@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { CacheModule } from '@nestjs/cache-manager';
 import { join } from 'path';
 import * as Joi from 'joi';
 import { PrismaModule } from './shared/prisma/prisma.module';
@@ -13,6 +14,7 @@ import { ProjectsModule } from './modules/projects/projects.module';
 import { BlogModule } from './modules/blog/blog.module';
 import { AtGuard } from './modules/auth/infra/guards/at.guard';
 import { RolesGuard } from './modules/auth/infra/guards/roles.guard';
+import { CacheControlInterceptor } from './shared/interceptors/cache-control.interceptor';
 
 @Module({
   imports: [
@@ -36,6 +38,11 @@ import { RolesGuard } from './modules/auth/infra/guards/roles.guard';
       sortSchema: true,
       playground: true,
     }),
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 60, // 60 seconds (Note: in cache-manager v5+ this is in seconds, but @nestjs/cache-manager might differ depending on version)
+      max: 100,
+    }),
     PrismaModule,
     UsersModule,
     AuthModule,
@@ -52,6 +59,10 @@ import { RolesGuard } from './modules/auth/infra/guards/roles.guard';
     {
       provide: APP_GUARD,
       useClass: RolesGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheControlInterceptor,
     },
   ],
 })

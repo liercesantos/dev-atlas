@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { ProjectsController } from './projects.controller';
 import { ProjectsService } from '../../application/services/projects.service';
 
@@ -14,6 +15,12 @@ describe('ProjectsController', () => {
     remove: jest.fn(),
   };
 
+  const mockCacheManager = {
+    get: jest.fn(),
+    set: jest.fn(),
+    del: jest.fn(),
+  };
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ProjectsController],
@@ -21,6 +28,10 @@ describe('ProjectsController', () => {
         {
           provide: ProjectsService,
           useValue: mockProjectsService,
+        },
+        {
+          provide: CACHE_MANAGER,
+          useValue: mockCacheManager,
         },
       ],
     }).compile();
