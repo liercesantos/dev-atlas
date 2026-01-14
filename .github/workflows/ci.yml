@@ -6,92 +6,142 @@ on:
   push:
     branches: [main]
 
+env:
+  NODE_VERSION: 18
+  PNPM_VERSION: 9
+
 jobs:
-  install:
-    name: Install Dependencies
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-    outputs:
-      cache-hit: ${{ steps.cache.outputs.cache-hit }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: pnpm
+      - uses: actions/checkout@v4
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: pnpm
-
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
+      - name: Run lint
+        run: pnpm lint
 
   test:
     name: Tests
     runs-on: ubuntu-latest
-    needs: install
+    needs: lint
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
         with:
-          node-version: 18
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test
+      - name: Run tests
+        run: pnpm test
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate coverage
+        run: pnpm coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
 
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: coverage
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
         with:
-          node-version: 18
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build frontend
         run: pnpm --filter frontend build
 
       - name: Build backend
         run: pnpm --filter backend build
+
+  lighthouse:
+    name: Lighthouse Performance
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build frontend
+        run: pnpm --filter frontend build
+
+      - name: Run Lighthouse CI
+        run: pnpm dlx @lhci/cli autorun

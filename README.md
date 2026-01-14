@@ -1,4 +1,6 @@
 # 🚀 DevAtlas
+![Coverage](https://img.shields.io/codecov/c/github/liercesantos/devatlas/main)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-95%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18.x-brightgreen)
 ![TypeScript](https://img.shields.io/badge/typescript-strict-blue)

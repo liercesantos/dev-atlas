@@ -7,17 +7,17 @@ export class CreateProjectDto {
   @Field()
   @ApiProperty({ example: 'My Awesome Project' })
   @IsString()
-  title: string;
+  title!: string;
 
   @Field()
   @ApiProperty({ example: 'A brief description' })
   @IsString()
-  description: string;
+  description!: string;
 
   @Field()
   @ApiProperty({ example: 'Full project content in markdown' })
   @IsString()
-  content: string;
+  content!: string;
 
   @Field({ nullable: true })
   @ApiPropertyOptional({ example: 'https://example.com/image.png' })
