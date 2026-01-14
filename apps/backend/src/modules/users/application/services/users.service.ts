@@ -27,11 +27,16 @@ export class UsersService {
     return this.usersRepository.findById(id);
   }
 
-  async updateRefreshToken(userId: string, refreshToken: string | null): Promise<void> {
+  async updateRefreshToken(
+    userId: string,
+    refreshToken: string | null,
+  ): Promise<void> {
     let hashedRefreshToken = null;
     if (refreshToken) {
       hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
     }
-    await this.usersRepository.update(userId, { refreshToken: hashedRefreshToken });
+    await this.usersRepository.update(userId, {
+      refreshToken: hashedRefreshToken,
+    });
   }
 }

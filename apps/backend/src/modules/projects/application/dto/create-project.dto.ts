@@ -1,5 +1,11 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsString, IsOptional, IsArray, IsBoolean, IsUrl } from 'class-validator';
+import {
+  IsString,
+  IsOptional,
+  IsArray,
+  IsBoolean,
+  IsUrl,
+} from 'class-validator';
 import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()

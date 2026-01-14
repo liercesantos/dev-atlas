@@ -40,7 +40,10 @@ export class ProjectsController {
   @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Create a new project' })
-  create(@GetUser('id') userId: string, @Body() createProjectDto: CreateProjectDto) {
+  create(
+    @GetUser('id') userId: string,
+    @Body() createProjectDto: CreateProjectDto,
+  ) {
     return this.projectsService.create(userId, createProjectDto);
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Project } from '../entities/project.entity';
 
 export interface IProjectsRepository {

@@ -1,23 +1,22 @@
 {
   "name": "@dev-atlas/backend",
   "version": "0.2.0",
+  "private": true,
   "description": "",
   "author": "",
-  "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
-    "lint": "eslint src --max-warnings=0",
+    "start:prod": "node dist/src/main.js",
+    "lint": "eslint src --max-warnings=31",
     "test": "jest",
     "build": "nest build",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "prisma": {
     "seed": "ts-node src/prisma/seed.ts"

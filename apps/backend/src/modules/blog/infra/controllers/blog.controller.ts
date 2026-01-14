@@ -47,7 +47,10 @@ export class BlogController {
   @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Create a new blog post' })
-  create(@GetUser('id') userId: string, @Body() createBlogPostDto: CreateBlogPostDto) {
+  create(
+    @GetUser('id') userId: string,
+    @Body() createBlogPostDto: CreateBlogPostDto,
+  ) {
     return this.blogService.create(userId, createBlogPostDto);
   }
 
@@ -55,7 +58,10 @@ export class BlogController {
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update a blog post' })
-  update(@Param('id') id: string, @Body() updateBlogPostDto: UpdateBlogPostDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateBlogPostDto: UpdateBlogPostDto,
+  ) {
     return this.blogService.update(id, updateBlogPostDto);
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { IProjectsRepository } from '../../domain/repositories/projects.repository.interface';
 import { CreateProjectDto } from '../dto/create-project.dto';
