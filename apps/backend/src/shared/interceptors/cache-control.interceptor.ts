@@ -13,7 +13,7 @@ import { Response } from 'express';
 export class CacheControlInterceptor implements NestInterceptor {
   constructor(private reflector: Reflector) {}
 
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<unknown> {
     const cacheControlValue = this.reflector.get<string>(
       CACHE_CONTROL_KEY,
       context.getHandler(),
