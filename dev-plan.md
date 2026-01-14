@@ -139,17 +139,17 @@
 ## 🧪 Phase 6 — Testing Strategy
 
 ### 6.1 Frontend Testing
-- [ ] Setup Jest
-- [ ] Setup React Testing Library
-- [ ] Test reusable components
-- [ ] Test custom hooks
-- [ ] Test pages (SSR / SSG)
+- [x] Setup Jest
+- [x] Setup React Testing Library
+- [x] Test reusable components
+- [x] Test custom hooks
+- [x] Test pages (SSR / SSG)
 - [ ] Snapshot tests where applicable
 
 ### 6.2 Backend Testing
-- [ ] Setup Jest for NestJS
-- [ ] Unit tests for services
-- [ ] Controller tests
+- [x] Setup Jest for NestJS
+- [x] Unit tests for services
+- [x] Controller tests
 - [ ] Integration tests
 - [ ] Test database isolation
 

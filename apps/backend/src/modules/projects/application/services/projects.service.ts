@@ -13,7 +13,7 @@ export class ProjectsService {
   ) {}
 
   async findAll(filter: ProjectFilterDto): Promise<PaginatedProjects> {
-    const { skip, take, search, tag, published } = filter;
+    const { skip = 0, take = 10, search, tag, published } = filter;
 
     const where: any = {};
 

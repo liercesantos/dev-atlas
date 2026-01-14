@@ -5,10 +5,12 @@
     "prepare": "husky install",
     "lint": "pnpm --recursive lint",
     "test": "pnpm --recursive test",
-    "build": "pnpm --recursive build"
+    "build": "pnpm --recursive build",
+    "coverage": "pnpm --recursive test:coverage"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^20.3.1",
+    "@lhci/cli": "^0.14.0",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
