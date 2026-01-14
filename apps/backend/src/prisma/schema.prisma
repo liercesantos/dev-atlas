@@ -18,6 +18,7 @@ model User {
   name          String?
   password      String
   role          Role      @default(USER)
+  refreshToken  String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   projects      Project[]
@@ -60,5 +61,6 @@ model BlogPost {
 
 enum Role {
   USER
+  EDITOR
   ADMIN
 }

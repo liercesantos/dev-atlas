@@ -3,9 +3,10 @@ export class User {
     public readonly id: string,
     public readonly email: string,
     public readonly name: string | null,
-    public readonly role: 'USER' | 'ADMIN',
+    public readonly role: 'USER' | 'EDITOR' | 'ADMIN',
     public readonly createdAt: Date,
     public readonly updatedAt: Date,
     public readonly password?: string,
+    public readonly refreshToken?: string | null,
   ) {}
 }
