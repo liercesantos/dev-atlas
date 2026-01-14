@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
@@ -121,7 +121,18 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -136,6 +147,17 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,9 +203,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Module } from '@nestjs/common';</span>
 <span class="cstat-no" title="statement not covered" >import { ConfigModule } from '@nestjs/config';</span>
-<span class="cstat-no" title="statement not covered" >import { APP_GUARD } from '@nestjs/core';</span>
+<span class="cstat-no" title="statement not covered" >import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';</span>
 <span class="cstat-no" title="statement not covered" >import { GraphQLModule } from '@nestjs/graphql';</span>
 <span class="cstat-no" title="statement not covered" >import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';</span>
+<span class="cstat-no" title="statement not covered" >import { CacheModule } from '@nestjs/cache-manager';</span>
 <span class="cstat-no" title="statement not covered" >import { join } from 'path';</span>
 <span class="cstat-no" title="statement not covered" >import * as Joi from 'joi';</span>
 <span class="cstat-no" title="statement not covered" >import { PrismaModule } from './shared/prisma/prisma.module';</span>
@@ -194,6 +217,7 @@
 <span class="cstat-no" title="statement not covered" >import { BlogModule } from './modules/blog/blog.module';</span>
 <span class="cstat-no" title="statement not covered" >import { AtGuard } from './modules/auth/infra/guards/at.guard';</span>
 <span class="cstat-no" title="statement not covered" >import { RolesGuard } from './modules/auth/infra/guards/roles.guard';</span>
+<span class="cstat-no" title="statement not covered" >import { CacheControlInterceptor } from './shared/interceptors/cache-control.interceptor';</span>
 &nbsp;
 @Module({
   imports: [
@@ -217,6 +241,11 @@
       sortSchema: true,
       playground: true,
     }),
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 60, // 60 seconds (Note: in cache-manager v5+ this is in seconds, but @nestjs/cache-manager might differ depending on version)
+      max: 100,
+    }),
     PrismaModule,
     UsersModule,
     AuthModule,
@@ -234,6 +263,10 @@
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheControlInterceptor,
+    },
   ],
 })
 export <span class="cstat-no" title="statement not covered" >class <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >AppModule </span>{}</span></span>
@@ -244,7 +277,7 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-14T22:30:46.558Z
+                at 2026-01-14T23:27:40.567Z
             </div>
         <script src="../prettify.js"></script>
         <script>
