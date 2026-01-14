@@ -1,5 +1,4 @@
 # ADR 0003 — Backend Modular & Domain-Oriented Architecture
-
 - **Status:** Accepted
 - **Date:** 2026-01-14
 - **Deciders:** DevAtlas Core Team
@@ -8,20 +7,17 @@
 ---
 
 ## 📌 Context
-
 DevAtlas requires a backend architecture that:
 - Scales as new business domains are introduced
 - Enforces clear separation of responsibilities
 - Is easy to test and reason about
 - Supports both REST and GraphQL APIs
 - Applies security and cross-cutting concerns consistently
-
-The backend must behave like a real-world production system rather than a simple portfolio API.
+>The backend must behave like a real-world production system rather than a simple portfolio API.
 
 ---
 
 ## 🎯 Decision
-
 We adopt a **modular, domain-oriented architecture** using **NestJS**, with explicit boundaries between **Application**, **Domain**, and **Infrastructure** layers.
 
 Key decisions:
@@ -36,16 +32,13 @@ Key decisions:
 ## 🧩 Architectural Structure
 
 ### Domain-Oriented Modules
-
 Each domain is implemented as a self-contained module:
-
 - Auth
 - Users
 - Projects
 - Blog
 
 Each module follows the same internal structure:
-
 ```txt
 module/
 ├── application/
@@ -66,7 +59,8 @@ module/
 ---
 
 ## 🧠 Layer Responsibilities
-1️⃣ Domain Layer
+
+### 1️⃣ Domain Layer
 - Pure business logic
 - Entities and invariants
 - Domain rules and validations
@@ -74,7 +68,7 @@ module/
 
 ---
 
-2️⃣ Application Layer
+### 2️⃣ Application Layer
 - Use cases
 - Orchestration of domain logic
 - Input/output boundaries (DTOs)
@@ -82,7 +76,7 @@ module/
 
 ---
 
-3️⃣ Infrastructure Layer
+### 3️⃣ Infrastructure Layer
 - HTTP controllers (REST)
 - GraphQL resolvers
 - Database repositories
@@ -91,13 +85,14 @@ module/
 ---
 
 ## 🔄 Dependency Rule
-- Dependencies flow inward only:
-  - Infrastructure → Application → Domain
 
-- The domain layer never depends on:
-  - Frameworks
-  - Databases
-  - Transport protocols
+### Dependencies flow inward only:
+- Infrastructure → Application → Domain
+
+### The domain layer never depends on:
+- Frameworks
+- Databases
+- Transport protocols
 
 ---
 
@@ -121,43 +116,46 @@ module/
 ---
 
 ## 🧪 Testing Strategy
-- Domain
+
+### Domain
 - Pure unit tests
 - No mocks required
-- Application
+### Application
 - Service-level unit tests
 - Mocked repositories
-- Infrastructure
+### Infrastructure
 - Controller and resolver tests
-- Integration tests with test database
+- Integration tests with a test database
 
 ---
 
 ## 🔄 Alternatives Considered
-1. Layer-based Architecture (Controllers/Services/Repositories):
-    ❌ Weak domain boundaries
-    ❌ Harder to scale feature complexity
-2. Microservices Architecture:
-    ❌ Overhead not justified at current scale
-    ❌ Increased operational complexity
-3. Anemic Domain Model:
-    ❌ Business logic leaks into services
-    ❌ Harder to maintain invariants
+
+### Layer-based Architecture (Controllers/Services/Repositories):
+- ❌ Weak domain boundaries
+- ❌ Harder to scale feature complexity
+### Microservices Architecture:
+- ❌ Overhead isn’t justified at the current scale
+- ❌ Increased operational complexity
+### Anemic Domain Model:
+- ❌ Business logic leaks into services
+- ❌ Harder to maintain invariants
 
 ---
 
 ## ⚖️ Consequences
-- Positive
+
+### Positive
 - High cohesion within modules
 - Clear ownership of business logic
 - Strong testability
 - Easier refactoring
 - Predictable scalability
-- Trade-offs
+### Trade-offs
 - More files and folders
 - Higher initial complexity
 - Requires discipline in boundaries
-- These trade-offs are acceptable given the long-term goals of the platform.
+>These trade-offs are acceptable given the long-term goals of the platform.
 
 ---
 

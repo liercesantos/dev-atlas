@@ -114,25 +114,25 @@
 ## 🌐 Phase 5 — API Design & Integration
 
 ### 5.1 REST API
-- [ ] RESTful endpoints design
-- [ ] Pagination & filtering
-- [ ] Error handling standard
-- [ ] API versioning
-- [ ] Swagger documentation
+- [x] RESTful endpoints design
+- [x] Pagination & filtering
+- [x] Error handling standard
+- [x] API versioning
+- [x] Swagger documentation
 
 ### 5.2 GraphQL API
-- [ ] Setup GraphQL module (NestJS)
-- [ ] Define schema & resolvers
-- [ ] Implement queries and mutations
-- [ ] Enable GraphQL Playground
-- [ ] Compare REST vs GraphQL usage
+- [x] Setup GraphQL module (NestJS)
+- [x] Define schema & resolvers
+- [x] Implement queries and mutations
+- [x] Enable GraphQL Playground
+- [x] Compare REST vs GraphQL usage
 
 ### 5.3 Frontend Integration
-- [ ] Axios instance with interceptors
-- [ ] Auth token handling
-- [ ] Global API error handler
-- [ ] GraphQL client (Apollo)
-- [ ] Typed API responses
+- [x] Axios instance with interceptors
+- [x] Auth token handling
+- [x] Global API error handler
+- [x] GraphQL client (Apollo)
+- [x] Typed API responses
 
 ---
 

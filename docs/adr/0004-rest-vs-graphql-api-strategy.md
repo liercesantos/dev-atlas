@@ -1,5 +1,4 @@
 # ADR 0004 — REST vs GraphQL API Strategy
-
 - **Status:** Accepted
 - **Date:** 2026-01-14
 - **Deciders:** DevAtlas Core Team
@@ -9,23 +8,21 @@
 
 ## 📌 Context
 
-DevAtlas exposes data to multiple frontend surfaces, including:
+### DevAtlas exposes data to multiple frontend surfaces, including:
 - Public, SEO-driven pages
 - Authenticated dashboards
 - Potential future clients (mobile, third-party integrations)
 
-The API layer must:
+### The API layer must:
 - Remain flexible as requirements evolve
 - Avoid unnecessary complexity
 - Promote clarity and long-term maintainability
 - Demonstrate real-world API design skills
-
-Using both REST and GraphQL can provide the best trade-off if responsibilities are clearly defined.
+>Using both REST and GraphQL can provide the best trade-off if responsibilities are clearly defined.
 
 ---
 
 ## 🎯 Decision
-
 We adopt a **hybrid API strategy**, using **REST and GraphQL side by side**, each where it provides the most value.
 
 Key decisions:
@@ -82,12 +79,12 @@ Key decisions:
 
 ## 🔄 Shared Business Logic
 
-Both REST controllers and GraphQL resolvers:
+### Both REST controllers and GraphQL resolvers:
 - Delegate to the same **Application services**
 - Operate on the same **Domain entities**
 - Share validation and authorization rules
 
-This ensures:
+### This ensures:
 - Consistency
 - Testability
 - Single source of truth
@@ -95,7 +92,6 @@ This ensures:
 ---
 
 ## 🔐 Security Considerations
-
 - Authentication enforced at application boundaries
 - Authorization via RBAC guards
 - GraphQL depth limiting
@@ -147,13 +143,11 @@ This ensures:
 ### Trade-offs
 - Increased conceptual complexity
 - Requires discipline to avoid misuse
-
-These trade-offs are acceptable given the platform’s goals.
+>These trade-offs are acceptable given the platform’s goals.
 
 ---
 
 ## 📐 Principles Enforced
-
 - Use the simplest tool that solves the problem
 - Avoid premature optimization
 - Explicit API contracts
@@ -162,7 +156,6 @@ These trade-offs are acceptable given the platform’s goals.
 ---
 
 ## 🔮 Future Considerations
-
 - GraphQL federation
 - Public API exposure
 - API rate limiting strategies
@@ -171,7 +164,6 @@ These trade-offs are acceptable given the platform’s goals.
 ---
 
 ## ✅ Outcome
-
 This hybrid API strategy ensures that DevAtlas remains flexible, maintainable, and aligned with real-world production patterns.
 
 > **This ADR defines how APIs must be designed and consumed across the platform.**

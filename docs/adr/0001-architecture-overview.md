@@ -1,5 +1,4 @@
 # ADR 0001 — Architecture Overview
-
 - **Status:** Accepted
 - **Date:** 2026-01-14
 - **Deciders:** DevAtlas Core Team
@@ -8,7 +7,6 @@
 ---
 
 ## 📌 Context
-
 DevAtlas is a fullstack web platform designed to serve as a professional engineering portfolio while behaving like a real-world production system.
 
 The platform must:
@@ -17,13 +15,11 @@ The platform must:
 - Scale feature development without architectural degradation
 - Enable strong typing and testability across the stack
 - Follow industry-standard frontend and backend practices
-
-The system is expected to be maintained long-term and evolve with new features, integrations, and performance requirements.
+>The system is expected to be maintained long-term and evolve with new features, integrations, and performance requirements.
 
 ---
 
 ## 🎯 Decision
-
 We adopt a **fullstack, modular, domain-oriented architecture** with clear separation of concerns across frontend, backend, and infrastructure layers.
 
 ### High-level decisions:
@@ -115,13 +111,11 @@ We adopt a **fullstack, modular, domain-oriented architecture** with clear separ
 - Higher initial complexity
 - Steeper learning curve
 - More setup compared to simple portfolios
-
-These trade-offs are acceptable given the project’s goals as a senior-level engineering showcase.
+>These trade-offs are acceptable given the project’s goals as a software engineering showcase.
 
 ---
 
 ## 📐 Architectural Principles
-
 - Separation of Concerns
 - Single Responsibility Principle
 - Explicit Boundaries
@@ -132,7 +126,6 @@ These trade-offs are acceptable given the project’s goals as a senior-level en
 ---
 
 ## 🔮 Future Considerations
-
 - Microservices extraction if needed
 - Event-driven architecture
 - Advanced caching strategies
@@ -142,7 +135,6 @@ These trade-offs are acceptable given the project’s goals as a senior-level en
 ---
 
 ## ✅ Outcome
-
 This architecture provides a **robust, scalable, and professional foundation** for DevAtlas, aligning technical excellence with real-world production standards.
 
 > **This ADR establishes the architectural backbone of the platform and guides all future technical decisions.**

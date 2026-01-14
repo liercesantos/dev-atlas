@@ -1,5 +1,4 @@
 # ADR 0002 — Frontend Architecture (App Router + Feature-Based Structure)
-
 - **Status:** Accepted
 - **Date:** 2026-01-14
 - **Deciders:** DevAtlas Core Team
@@ -8,20 +7,17 @@
 ---
 
 ## 📌 Context
-
 DevAtlas is a content-driven and feature-rich platform that requires:
 - Excellent SEO and performance
 - Clear separation between public and protected areas
 - Scalability as new features are introduced
 - Strong typing and testability
 - Modern React best practices
-
-The frontend must support both static and dynamic rendering strategies while maintaining a clean and predictable codebase.
+>The frontend must support both static and dynamic rendering strategies while maintaining a clean and predictable codebase.
 
 ---
 
 ## 🎯 Decision
-
 We adopt **Next.js App Router** combined with a **feature-based architecture** to structure the frontend application.
 
 Key decisions:
@@ -50,8 +46,7 @@ Each feature owns its:
 - Services
 - State management
 - Types
-
-This reduces coupling and improves scalability.
+>This reduces coupling and improves scalability.
 
 ---
 
@@ -92,12 +87,13 @@ apps/frontend/
 ---
 
 ## ⚛️ Component Strategy
-Server Components (Default)
+
+### Server Components (Default)
 - Data fetching
 - SEO-critical pages
 - Static content
 - Performance-sensitive UI
-Client Components (Opt-in)
+### Client Components (Opt-in)
 - Forms
 - Interactive components
 - Auth state
@@ -152,25 +148,29 @@ Client Components (Opt-in)
 ---
 
 ## 🔄 Alternatives Considered
-Pages Router
+
+### Pages Router
 - ❌ Less flexible layouts
 - ❌ Less alignment with Next.js roadmap
-Layer-based Architecture (components/services/hooks)
+### Layer-based Architecture (components/services/hooks)
 - ❌ Increased coupling
 - ❌ Harder feature isolation
 
 ---
 
 ## ⚖️ Consequences
-Positive
+
+### Positive
 - Clear ownership of features
 - Predictable scalability
 - Better performance by default
 - SEO-friendly architecture
 - Easier onboarding
-Trade-offs
+### Trade-offs
 - Requires discipline in feature boundaries
 - Slightly higher upfront architectural effort
+
+---
 
 ## 📐 Principles Enforced
 - Feature isolation
@@ -183,4 +183,4 @@ Trade-offs
 ## ✅ Outcome
 This frontend architecture ensures that DevAtlas remains scalable, performant, and maintainable as the platform grows.
 
-> **This ADR defines the foundation for all frontend development decisions going forward.**
+>**This ADR defines the foundation for all frontend development decisions going forward.**

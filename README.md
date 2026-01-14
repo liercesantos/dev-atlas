@@ -1,4 +1,12 @@
 # 🚀 DevAtlas
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D18.x-brightgreen)
+![TypeScript](https://img.shields.io/badge/typescript-strict-blue)
+![Next.js](https://img.shields.io/badge/Next.js-App%20Router-black)
+![NestJS](https://img.shields.io/badge/NestJS-Backend-red)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Utility--First-38bdf8)
+
 
 DevAtlas is a **production-grade fullstack web platform** built to showcase modern software engineering practices.  
 It is designed not as a simple portfolio, but as a **real-world system** demonstrating architecture, scalability, performance, security, and maintainability.
@@ -197,6 +205,9 @@ pnpm --filter backend start:dev
 
 ## 📄 License
 This project is licensed under the MIT License.
+- This project is intended as a professional portfolio and technical showcase.
+
+---
 
 >DevAtlas is not a demo.
 It is a deliberate, production-minded engineering showcase.
