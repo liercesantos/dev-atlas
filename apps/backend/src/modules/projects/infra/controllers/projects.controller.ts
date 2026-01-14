@@ -7,8 +7,10 @@ import {
   Param,
   Delete,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 import { ProjectsService } from '../../application/services/projects.service';
 import { CreateProjectDto } from '../../application/dto/create-project.dto';
 import { UpdateProjectDto } from '../../application/dto/update-project.dto';
@@ -16,6 +18,7 @@ import { ProjectFilterDto } from '../../application/dto/project-filter.dto';
 import { Public } from '@/shared/decorators/public.decorator';
 import { Roles } from '@/shared/decorators/roles.decorator';
 import { GetUser } from '@/shared/decorators/get-user.decorator';
+import { CacheControl } from '@/shared/decorators/cache-control.decorator';
 
 @ApiTags('projects')
 @Controller('projects')
@@ -23,6 +26,8 @@ export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
   @Public()
+  @UseInterceptors(CacheInterceptor)
+  @CacheControl('public, max-age=60')
   @Get()
   @ApiOperation({ summary: 'Get all projects with pagination and filters' })
   findAll(@Query() filter: ProjectFilterDto) {
@@ -30,6 +35,8 @@ export class ProjectsController {
   }
 
   @Public()
+  @UseInterceptors(CacheInterceptor)
+  @CacheControl('public, max-age=60')
   @Get(':id')
   @ApiOperation({ summary: 'Get a project by ID' })
   findOne(@Param('id') id: string) {
