@@ -1,5 +1,4 @@
 # ADR 0005 — Authentication & Authorization Model
-
 - **Status:** Accepted
 - **Date:** 2026-01-14
 - **Deciders:** DevAtlas Core Team
@@ -9,13 +8,13 @@
 
 ## 📌 Context
 
-DevAtlas includes:
+### DevAtlas includes:
 - Public, unauthenticated access to content
 - Authenticated dashboards for content management
 - Role-based access for administrative features
 - Potential future expansion to multiple clients or roles
 
-The authentication and authorization model must:
+### The authentication and authorization model must:
 - Be secure by default
 - Support fine-grained access control
 - Integrate cleanly with frontend and backend architectures
@@ -24,7 +23,6 @@ The authentication and authorization model must:
 ---
 
 ## 🎯 Decision
-
 We adopt a **JWT-based authentication model** combined with **Role-Based Access Control (RBAC)**.
 
 Key decisions:
@@ -53,7 +51,6 @@ Key decisions:
 ---
 
 ### Token Storage
-
 - Stored in **HTTP-only cookies**
 - SameSite policy applied
 - Secure flag enabled in production
@@ -72,7 +69,7 @@ Logout → Tokens invalidated
 
 ---
 
-### 🛂 Authorization Model (RBAC)
+## 🛂 Authorization Model (RBAC)
 - Roles
 - Admin
 - Editor
@@ -90,7 +87,7 @@ Logout → Tokens invalidated
 
 ---
 
-### 🧩 Backend Implementation
+## 🧩 Backend Implementation
 - NestJS Components
 - AuthModule
 - JwtStrategy
@@ -101,7 +98,7 @@ Logout → Tokens invalidated
 
 ---
 
-### ⚛️ Frontend Integration
+## ⚛️ Frontend Integration
 - Authentication state handled via Context API
 - Silent token refresh
 - Route protection via middleware
@@ -109,40 +106,43 @@ Logout → Tokens invalidated
 
 ---
 
-### 🧪 Testing Strategy
-- Authentication
+## 🧪 Testing Strategy
+
+### Authentication
 - Token issuance tests
 - Refresh flow tests
 - Invalid token handling
-- Authorization
+### Authorization
 - Guard unit tests
 - Role-based access tests
 - Permission enforcement tests
 
 ---
 
-### 🔄 Alternatives Considered
-- Session-based Authentication
+## 🔄 Alternatives Considered
+
+### Session-based Authentication
 - ❌ Poor scalability
 - ❌ Increased server-side state
-- OAuth-only
+### OAuth-only
 - ❌ Overkill for initial scope
 - ❌ Reduced control for custom flows
-- Client-side token storage
+### Client-side token storage
 - ❌ Increased XSS risk
 
 ---
 
-### ⚖️ Consequences
-- Positive
+## ⚖️ Consequences
+
+### Positive
 - Secure and scalable authentication
 - Clear authorization rules
 - Works across REST and GraphQL
 - Strong real-world alignment
-- Trade-offs
+### Trade-offs
 - More complex token lifecycle
 - Requires careful refresh logic
-- These trade-offs are acceptable for a production-grade system.
+>These trade-offs are acceptable for a production-grade system.
 
 ---
 
@@ -156,7 +156,7 @@ Logout → Tokens invalidated
 
 ### 🔮 Future Considerations
 - OAuth provider integration
-- Multi-factor authentication (MFA)
+- Multifactor authentication (MFA)
 - Multi-tenant authorization
 - Fine-grained permission policies
 
