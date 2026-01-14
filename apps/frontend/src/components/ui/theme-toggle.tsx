@@ -6,7 +6,7 @@ import { useTheme } from '@/hooks/use-theme';
 import { Button } from '@/components/ui/button';
 
 export function ThemeToggle() {
-  const { toggleTheme, isDark } = useTheme();
+  const { toggleTheme } = useTheme();
 
   return (
     <Button variant="ghost" size="icon" onClick={toggleTheme}>

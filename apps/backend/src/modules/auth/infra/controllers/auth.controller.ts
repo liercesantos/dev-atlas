@@ -68,7 +68,10 @@ export class AuthController {
     return { message: 'Tokens refreshed successfully' };
   }
 
-  private setCookies(res: Response, tokens: { accessToken: string; refreshToken: string }) {
+  private setCookies(
+    res: Response,
+    tokens: { accessToken: string; refreshToken: string },
+  ) {
     res.cookie('access_token', tokens.accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',

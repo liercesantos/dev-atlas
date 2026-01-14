@@ -2,8 +2,13 @@ import js from "@eslint/js";
 import next from "eslint-config-next";
 import tseslint from "typescript-eslint";
 
-export default [
+const config = [
+  {
+    ignores: ["coverage/**"],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  next(),
+  ...next,
 ];
+
+export default config;

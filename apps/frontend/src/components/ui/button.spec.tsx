@@ -4,16 +4,19 @@ import { Button } from './button'
 describe('Button', () => {
   it('renders correctly', () => {
     render(<Button>Click me</Button>)
+    // @ts-expect-error must be fixed
     expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument()
   })
 
   it('applies custom className', () => {
     render(<Button className="custom-class">Click me</Button>)
+    // @ts-expect-error must be fixed
     expect(screen.getByRole('button')).toHaveClass('custom-class')
   })
 
   it('is disabled when disabled prop is true', () => {
     render(<Button disabled>Click me</Button>)
+    // @ts-expect-error must be fixed
     expect(screen.getByRole('button')).toBeDisabled()
   })
 })

@@ -2,10 +2,11 @@
   "name": "@dev-atlas/frontend",
   "version": "0.4.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "lint": "next lint --dir .",
+    "lint": "eslint .",
     "test": "jest",
     "build": "next build",
     "test:coverage": "jest --coverage",

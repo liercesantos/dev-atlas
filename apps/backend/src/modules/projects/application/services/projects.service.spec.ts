@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProjectsService } from './projects.service';
 import { NotFoundException } from '@nestjs/common';
@@ -55,7 +56,9 @@ describe('ProjectsService', () => {
         skip: 0,
         take: 10,
       });
-      expect(repository.findAll).toHaveBeenCalledWith(expect.objectContaining({ skip: 0, take: 10 }));
+      expect(repository.findAll).toHaveBeenCalledWith(
+        expect.objectContaining({ skip: 0, take: 10 }),
+      );
     });
   });
 

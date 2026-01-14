@@ -2,11 +2,11 @@
   "name": "dev-atlas",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
-    "lint": "pnpm -r --filter ./apps/* lint",
+    "prepare": "husky",
+    "lint": "pnpm --recursive lint",
     "test": "pnpm --recursive test",
     "build": "pnpm --recursive build",
-    "coverage": "pnpm --recursive test:coverage"
+    "coverage": "pnpm -r --filter \"./apps/*\" test:coverage"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^20.3.1",

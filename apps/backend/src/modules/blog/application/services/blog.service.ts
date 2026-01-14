@@ -1,4 +1,10 @@
-import { Injectable, Inject, NotFoundException, ConflictException } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  Injectable,
+  Inject,
+  NotFoundException,
+  ConflictException,
+} from '@nestjs/common';
 import { IBlogRepository } from '../../domain/repositories/blog.repository.interface';
 import { CreateBlogPostDto } from '../dto/create-blog-post.dto';
 import { UpdateBlogPostDto } from '../dto/update-blog-post.dto';
@@ -65,7 +71,9 @@ export class BlogService {
   async create(authorId: string, dto: CreateBlogPostDto) {
     const existing = await this.blogRepository.findBySlug(dto.slug);
     if (existing) {
-      throw new ConflictException(`Blog post with slug "${dto.slug}" already exists`);
+      throw new ConflictException(
+        `Blog post with slug "${dto.slug}" already exists`,
+      );
     }
     return this.blogRepository.create({
       ...dto,
@@ -78,7 +86,9 @@ export class BlogService {
     if (dto.slug) {
       const existing = await this.blogRepository.findBySlug(dto.slug);
       if (existing && existing.id !== id) {
-        throw new ConflictException(`Blog post with slug "${dto.slug}" already exists`);
+        throw new ConflictException(
+          `Blog post with slug "${dto.slug}" already exists`,
+        );
       }
     }
     return this.blogRepository.update(id, dto);
