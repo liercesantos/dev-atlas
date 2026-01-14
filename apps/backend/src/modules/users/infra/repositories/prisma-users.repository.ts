@@ -45,6 +45,7 @@ export class PrismaUsersRepository implements IUsersRepository {
       user.createdAt,
       user.updatedAt,
       user.password,
+      user.refreshToken,
     );
   }
 }

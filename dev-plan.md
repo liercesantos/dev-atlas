@@ -97,17 +97,17 @@
 ## 🔐 Phase 4 — Authentication & Authorization
 
 ### 4.1 Authentication
-- [ ] Implement JWT authentication
-- [ ] Access token strategy
-- [ ] Refresh token strategy
-- [ ] Secure password hashing
-- [ ] Token rotation logic
+- [x] Implement JWT authentication
+- [x] Access token strategy
+- [x] Refresh token strategy
+- [x] Secure password hashing
+- [x] Token rotation logic
 
 ### 4.2 Authorization
-- [ ] Role-based access control (RBAC)
-- [ ] Guards and decorators
-- [ ] Permission-based routes
-- [ ] Admin vs Public separation
+- [x] Role-based access control (RBAC)
+- [x] Guards and decorators
+- [x] Permission-based routes
+- [x] Admin vs Public separation
 
 ---
 

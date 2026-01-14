@@ -88,11 +88,11 @@ devatlas/
 ├── docs/
 │   ├── adr/             # Architecture Decision Records
 │   ├── diagrams/        # Architecture diagrams
-│   ├── dev-plan.md
 │   └── project-structure.md
 │
 ├── .github/             # CI/CD workflows
-└── README.md
+├── README.md
+└── dev-plan.md
 ```
 
 A detailed structure is documented in **[Project Structure](/docs/project-structure.md)**.

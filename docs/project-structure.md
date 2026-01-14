@@ -196,13 +196,12 @@ packages/
 ```txt
 docs/
 ├── adr/
-├── adr/
-├── adr/
-│   ├── 0001-use-nextjs-app-router.md
-│   ├── 0002-nestjs-modular-architecture.md
-│   └── 0003-rest-vs-graphql.md
+│   ├── 0001-architecture-overview.md
+│   ├── 0002-frontend-architecture.md
+│   ├── 0003-backend-modular-domain-architecture.md
+│   ├── 0004-rest-vs-graphql-api-strategy.md
+│   └── 0005-authentication-authorization-model.md
 │
 └── diagrams/
-    ├── architecture.md
-    └── auth-flow.png
+    └── architecture.md
 ```
