@@ -4,14 +4,14 @@ import { Project } from '../../domain/entities/project.entity';
 @ObjectType()
 export class PaginatedProjects {
   @Field(() => [Project])
-  items: Project[];
+  items!: Project[];
 
   @Field(() => Int)
-  total: number;
+  total!: number;
 
   @Field(() => Int)
-  skip: number;
+  skip!: number;
 
   @Field(() => Int)
-  take: number;
+  take!: number;
 }

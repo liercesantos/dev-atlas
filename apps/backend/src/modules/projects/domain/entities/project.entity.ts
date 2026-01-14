@@ -3,16 +3,16 @@ import { ObjectType, Field, ID } from '@nestjs/graphql';
 @ObjectType()
 export class Project {
   @Field(() => ID)
-  id: string;
+  id!: string;
 
   @Field()
-  title: string;
+  title!: string;
 
   @Field()
-  description: string;
+  description!: string;
 
   @Field()
-  content: string;
+  content!: string;
 
   @Field({ nullable: true })
   imageUrl?: string;
@@ -24,19 +24,19 @@ export class Project {
   liveUrl?: string;
 
   @Field(() => [String])
-  tags: string[];
+  tags!: string[];
 
   @Field()
-  published: boolean;
+  published!: boolean;
 
   @Field()
-  authorId: string;
+  authorId!: string;
 
   @Field()
-  createdAt: Date;
+  createdAt!: Date;
 
   @Field()
-  updatedAt: Date;
+  updatedAt!: Date;
 
   constructor(partial: Partial<Project>) {
     Object.assign(this, partial);

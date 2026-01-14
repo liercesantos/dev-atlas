@@ -41,8 +41,8 @@ export class BlogService {
     return {
       items,
       total,
-      skip,
-      take,
+      skip: skip ?? 0,
+      take: take ?? 10,
     };
   }
 

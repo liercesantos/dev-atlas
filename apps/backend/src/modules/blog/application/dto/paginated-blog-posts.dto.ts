@@ -4,14 +4,14 @@ import { BlogPost } from '../../domain/entities/blog-post.entity';
 @ObjectType()
 export class PaginatedBlogPosts {
   @Field(() => [BlogPost])
-  items: BlogPost[];
+  items!: BlogPost[];
 
   @Field(() => Int)
-  total: number;
+  total!: number;
 
   @Field(() => Int)
-  skip: number;
+  skip!: number;
 
   @Field(() => Int)
-  take: number;
+  take!: number;
 }
