@@ -71,26 +71,26 @@
 ## 🧠 Phase 3 — Backend Core (Node.js + NestJS)
 
 ### 3.1 NestJS Setup
-- [ ] Initialize NestJS project
-- [ ] Enable TypeScript strict mode
-- [ ] Configure environment validation
-- [ ] Setup global exception filters
-- [ ] Setup logging system
-- [ ] Configure CORS
+- [x] Initialize NestJS project
+- [x] Enable TypeScript strict mode
+- [x] Configure environment validation
+- [x] Setup global exception filters
+- [x] Setup logging system
+- [x] Configure CORS
 
 ### 3.2 Architecture & Patterns
-- [ ] Modular architecture (Domain-based)
-- [ ] Separate Application / Domain / Infra layers
-- [ ] Create DTOs and Validators
-- [ ] Implement Repository pattern
-- [ ] Apply SOLID principles
+- [x] Modular architecture (Domain-based)
+- [x] Separate Application / Domain / Infra layers
+- [x] Create DTOs and Validators
+- [x] Implement Repository pattern
+- [x] Apply SOLID principles
 
 ### 3.3 Database
-- [ ] Setup PostgreSQL
-- [ ] Integrate Prisma ORM
-- [ ] Define schema models
-- [ ] Create migrations
-- [ ] Seed initial data
+- [x] Setup PostgreSQL
+- [x] Integrate Prisma ORM
+- [x] Define schema models
+- [x] Create migrations
+- [x] Seed initial data
 
 ---
 
