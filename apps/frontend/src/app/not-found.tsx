@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { constructMetadata } from '@/lib/seo/metadata';
 
 export const metadata = constructMetadata({
