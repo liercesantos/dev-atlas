@@ -14,33 +14,33 @@ export class PrismaBlogRepository implements IBlogRepository {
     where?: any;
     orderBy?: any;
   }): Promise<BlogPost[]> {
-    const posts = await this.prisma.blogPost.findMany(params);
-    return posts.map((p) => this.mapToEntity(p));
+    const posts: BlogPost[] = await this.prisma.blogPost.findMany(params);
+    return posts.map((p: BlogPost) => this.mapToEntity(p));
   }
 
   async findById(id: string): Promise<BlogPost | null> {
-    const post = await this.prisma.blogPost.findUnique({
+    const post: BlogPost | null = await this.prisma.blogPost.findUnique({
       where: { id },
     });
     return post ? this.mapToEntity(post) : null;
   }
 
   async findBySlug(slug: string): Promise<BlogPost | null> {
-    const post = await this.prisma.blogPost.findUnique({
+    const post: BlogPost | null = await this.prisma.blogPost.findUnique({
       where: { slug },
     });
     return post ? this.mapToEntity(post) : null;
   }
 
   async create(data: any): Promise<BlogPost> {
-    const post = await this.prisma.blogPost.create({
+    const post: BlogPost = await this.prisma.blogPost.create({
       data,
     });
     return this.mapToEntity(post);
   }
 
   async update(id: string, data: any): Promise<BlogPost> {
-    const post = await this.prisma.blogPost.update({
+    const post: BlogPost = await this.prisma.blogPost.update({
       where: { id },
       data,
     });
@@ -48,7 +48,7 @@ export class PrismaBlogRepository implements IBlogRepository {
   }
 
   async delete(id: string): Promise<BlogPost> {
-    const post = await this.prisma.blogPost.delete({
+    const post: BlogPost = await this.prisma.blogPost.delete({
       where: { id },
     });
     return this.mapToEntity(post);
