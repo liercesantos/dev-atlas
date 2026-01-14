@@ -13,6 +13,7 @@ out/
 # IDEs
 .vscode/
 .idea/
+temp.txt
 
 # OS
 .DS_Store

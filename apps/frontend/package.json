@@ -1,12 +1,13 @@
 {
   "name": "@dev-atlas/frontend",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "pnpm --recursive lint",
+    "test": "pnpm --recursive test",
+    "build": "pnpm --recursive build"
   },
   "dependencies": {
     "@apollo/client": "^4.0.13",

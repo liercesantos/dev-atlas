@@ -2,7 +2,10 @@
   "name": "dev-atlas",
   "private": true,
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "pnpm --recursive lint",
+    "test": "pnpm --recursive test",
+    "build": "pnpm --recursive build"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^20.3.1",
