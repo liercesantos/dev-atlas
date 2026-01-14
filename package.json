@@ -24,5 +24,8 @@
     "*.{json,md,yml}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
