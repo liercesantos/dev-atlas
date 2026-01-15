@@ -1,3 +1,9 @@
+## [1.0.0-beta.3](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2026-01-15)
+
+### Features
+
+* **frontend:** implement blog and admin pages, enhance homepage, and update features ([0706c95](https://github.com/liercesantos/dev-atlas/commit/0706c952982c83476f4621cbb87e3f526e64e8d6))
+
 ## [1.0.0-beta.2](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2026-01-15)
 
 ### Bug Fixes
