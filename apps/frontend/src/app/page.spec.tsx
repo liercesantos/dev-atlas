@@ -16,7 +16,7 @@ describe('HomePage', () => {
     render(<HomePage />)
 
     expect(screen.getByText(/🚀 DevAtlas/i)).toBeInTheDocument()
-    expect(screen.getByText(/Welcome to the future of portfolio engineering/i)).toBeInTheDocument()
+    expect(screen.getByText(/The ultimate production-grade portfolio engineering showcase/i)).toBeInTheDocument()
   })
 
   it('renders the ThemeToggle', () => {
