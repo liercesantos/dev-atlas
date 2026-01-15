@@ -1,19 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
+import {getServerAxios} from "@/lib/api/server-api";
+import {projectsService} from "@/features/projects/services/projects.service";
 
 // ISR configuration - revalidate every 3600 seconds (1 hour)
 export const revalidate = 3600;
 
 async function getProjects() {
-  // In a real app, this would be an API call to the backend
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
-  // return res.json();
-
-  // Mocking for demonstration
-  return [
-    { id: '1', title: 'DevAtlas', description: 'This very platform.' },
-    { id: '2', title: 'Portfolio Pro', description: 'An older portfolio project.' },
-  ];
+  try {
+    const api = await getServerAxios();
+    const { items } = await projectsService.getAll(undefined, api);
+    return items;
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    return [];
+  }
 }
 
 export default async function ProjectsPage() {

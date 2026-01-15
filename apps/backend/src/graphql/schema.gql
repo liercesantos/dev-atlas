@@ -1,0 +1,101 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BlogPost {
+  authorId: String!
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  published: Boolean!
+  slug: String!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateBlogPostDto {
+  content: String!
+  published: Boolean
+  slug: String!
+  title: String!
+}
+
+input CreateProjectDto {
+  content: String!
+  description: String!
+  imageUrl: String
+  liveUrl: String
+  published: Boolean
+  repoUrl: String
+  tags: [String!]
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createBlogPost(createBlogPostInput: CreateBlogPostDto!): BlogPost!
+  createProject(createProjectInput: CreateProjectDto!): Project!
+  removeBlogPost(id: String!): BlogPost!
+  removeProject(id: String!): Project!
+  updateBlogPost(id: String!, updateBlogPostInput: UpdateBlogPostDto!): BlogPost!
+  updateProject(id: String!, updateProjectInput: UpdateProjectDto!): Project!
+}
+
+type PaginatedBlogPosts {
+  items: [BlogPost!]!
+  skip: Int!
+  take: Int!
+  total: Int!
+}
+
+type PaginatedProjects {
+  items: [Project!]!
+  skip: Int!
+  take: Int!
+  total: Int!
+}
+
+type Project {
+  authorId: String!
+  content: String!
+  createdAt: DateTime!
+  description: String!
+  id: ID!
+  imageUrl: String
+  liveUrl: String
+  published: Boolean!
+  repoUrl: String
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+}
+
+type Query {
+  blogPost(id: String!): BlogPost!
+  blogPostBySlug(slug: String!): BlogPost!
+  blogPosts(published: Boolean, search: String, skip: Int = 0, take: Int = 10): PaginatedBlogPosts!
+  project(id: String!): Project!
+  projects(published: Boolean, search: String, skip: Int = 0, tag: String, take: Int = 10): PaginatedProjects!
+}
+
+input UpdateBlogPostDto {
+  content: String
+  published: Boolean
+  slug: String
+  title: String
+}
+
+input UpdateProjectDto {
+  content: String
+  description: String
+  imageUrl: String
+  liveUrl: String
+  published: Boolean
+  repoUrl: String
+  tags: [String!]
+  title: String
+}

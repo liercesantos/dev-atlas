@@ -6,15 +6,21 @@
     "lint": "pnpm --recursive lint",
     "test": "pnpm --recursive test",
     "build": "pnpm --recursive build",
-    "coverage": "pnpm -r --filter \"./apps/*\" test:coverage"
+    "coverage": "pnpm -r --filter \"./apps/*\" test:coverage",
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^20.3.1",
     "@lhci/cli": "^0.14.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.2",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "semantic-release": "^25.0.2"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -27,5 +33,6 @@
   },
   "engines": {
     "node": ">=22"
-  }
+  },
+  "version": "1.0.0-beta.4"
 }

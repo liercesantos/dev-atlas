@@ -38,15 +38,15 @@ export class PrismaUsersRepository implements IUsersRepository {
   }
 
   private mapToEntity(user: any): User {
-    return new User(
-      user.id,
-      user.email,
-      user.name,
-      user.role,
-      user.createdAt,
-      user.updatedAt,
-      user.password,
-      user.refreshToken,
-    );
+    return new User({
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+      password: user.password,
+      refreshToken: user.refreshToken,
+    });
   }
 }

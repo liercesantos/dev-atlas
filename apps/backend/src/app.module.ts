@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { CacheModule } from '@nestjs/cache-manager';
+import { LoggerModule } from 'nestjs-pino';
 import { join } from 'path';
 import * as Joi from 'joi';
 import { PrismaModule } from './shared/prisma/prisma.module';
@@ -12,6 +13,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { HealthModule } from './modules/health/health.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { BlogModule } from './modules/blog/blog.module';
+import { FeatureFlagsModule } from './modules/feature-flags/feature-flags.module';
 import { AtGuard } from './modules/auth/infra/guards/at.guard';
 import { RolesGuard } from './modules/auth/infra/guards/roles.guard';
 import { CacheControlInterceptor } from './shared/interceptors/cache-control.interceptor';
@@ -30,6 +32,20 @@ import { CacheControlInterceptor } from './shared/interceptors/cache-control.int
         JWT_ACCESS_EXPIRATION: Joi.string().default('15m'),
         JWT_REFRESH_SECRET: Joi.string().required(),
         JWT_REFRESH_EXPIRATION: Joi.string().default('7d'),
+        FRONTEND_URL: Joi.string().default('http://localhost:3000'),
+      }),
+    }),
+    LoggerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        pinoHttp: {
+          level: configService.get('NODE_ENV') !== 'production' ? 'debug' : 'info',
+          transport:
+            configService.get('NODE_ENV') !== 'production'
+              ? { target: 'pino-pretty', options: { colorize: true } }
+              : undefined,
+        },
       }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -49,6 +65,7 @@ import { CacheControlInterceptor } from './shared/interceptors/cache-control.int
     HealthModule,
     ProjectsModule,
     BlogModule,
+    FeatureFlagsModule,
   ],
   controllers: [],
   providers: [
