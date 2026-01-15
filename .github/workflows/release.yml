@@ -2,25 +2,49 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          node-version: 18
+          fetch-depth: 0
 
-      - uses: pnpm/action-setup@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 10
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - run: pnpm semantic-release
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Release
+        run: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Deploy to Staging
+        if: github.ref == 'refs/heads/develop'
+        run: echo "Deploying to Staging environment..."
+
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to Production environment..."
