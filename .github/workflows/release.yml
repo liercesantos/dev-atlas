@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [main, develop]
+    branches: [release, develop]
 
 jobs:
   release:
@@ -45,6 +45,6 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         run: echo "Deploying to Staging environment..."
 
-      - name: Deploy to Production
-        if: github.ref == 'refs/heads/main'
-        run: echo "Deploying to Production environment..."
+      - name: Deploy to Release
+        if: github.ref == 'refs/heads/release'
+        run: echo "Deploying to Release environment..."
