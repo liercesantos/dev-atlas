@@ -54,13 +54,24 @@ async function bootstrap() {
   // Swagger
   const config = new DocumentBuilder()
     .setTitle('DevAtlas API')
-    .setDescription('The DevAtlas API documentation')
+    .setDescription(
+      'The DevAtlas API documentation. This API provides endpoints for managing projects, blog posts, and user authentication.',
+    )
     .setVersion('1.0')
     .addBearerAuth()
-    .addCookieAuth('refreshToken')
+    .addCookieAuth('refresh_token')
+    .addTag('auth', 'Authentication and token management')
+    .addTag('projects', 'Project CRUD and listings')
+    .addTag('blog', 'Blog post management')
+    .addTag('health', 'System health and status')
+    .addTag('FeatureFlags', 'Feature toggle configuration')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('docs', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 
   await app.listen(port);
   const logger = app.get(Logger);

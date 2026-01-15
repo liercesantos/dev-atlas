@@ -6,7 +6,7 @@ async function getProjects() {
   // Mocking
   return [
     { id: '1', title: 'DevAtlas', published: true, createdAt: '2026-01-14' },
-    { id: '2', title: 'Portfolio Pro', published: false, createdAt: '2025-12-20' },
+    { id: '2', title: 'DevTrack', published: false, createdAt: '2025-12-20' },
   ];
 }
 

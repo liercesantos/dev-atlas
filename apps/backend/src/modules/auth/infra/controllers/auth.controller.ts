@@ -8,6 +8,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { ApiTags, ApiOperation, ApiResponse, ApiCookieAuth } from '@nestjs/swagger';
 import { AuthService } from '../../application/services/auth.service';
 import { LoginDto } from '../../application/dto/login.dto';
 import { RegisterDto } from '../../application/dto/register.dto';
@@ -15,6 +16,7 @@ import { RtGuard } from '../guards/rt.guard';
 import { Public } from '@/shared/decorators/public.decorator';
 import { GetUser } from '@/shared/decorators/get-user.decorator';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -22,6 +24,9 @@ export class AuthController {
   @Public()
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({ summary: 'Register a new user' })
+  @ApiResponse({ status: 201, description: 'User successfully registered' })
+  @ApiResponse({ status: 400, description: 'Bad request' })
   async register(
     @Body() registerDto: RegisterDto,
     @Res({ passthrough: true }) res: Response,
@@ -34,6 +39,9 @@ export class AuthController {
   @Public()
   @Post('login')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Login with email and password' })
+  @ApiResponse({ status: 200, description: 'Successfully logged in' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   async login(
     @Body() loginDto: LoginDto,
     @Res({ passthrough: true }) res: Response,
@@ -45,6 +53,8 @@ export class AuthController {
 
   @Post('logout')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Logout and clear cookies' })
+  @ApiResponse({ status: 200, description: 'Successfully logged out' })
   async logout(
     @GetUser('sub') userId: string,
     @Res({ passthrough: true }) res: Response,
@@ -58,6 +68,10 @@ export class AuthController {
   @UseGuards(RtGuard)
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
+  @ApiCookieAuth()
+  @ApiOperation({ summary: 'Refresh access token using refresh token cookie' })
+  @ApiResponse({ status: 200, description: 'Tokens successfully refreshed' })
+  @ApiResponse({ status: 401, description: 'Invalid refresh token' })
   async refresh(
     @GetUser('sub') userId: string,
     @GetUser('refreshToken') refreshToken: string,
