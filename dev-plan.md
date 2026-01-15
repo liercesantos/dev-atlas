@@ -5,7 +5,6 @@
 ---
 
 ## 📌 Project Goals
-
 - Demonstrate advanced proficiency in **React.js + Next.js**
 - Use **TypeScript** across the entire stack
 - Build a production-ready **Node.js + NestJS API**
@@ -144,14 +143,14 @@
 - [x] Test reusable components
 - [x] Test custom hooks
 - [x] Test pages (SSR / SSG)
-- [ ] Snapshot tests where applicable
+- [x] Snapshot tests where applicable
 
 ### 6.2 Backend Testing
 - [x] Setup Jest for NestJS
 - [x] Unit tests for services
 - [x] Controller tests
-- [ ] Integration tests
-- [ ] Test database isolation
+- [x] Integration tests
+- [x] Test database isolation
 
 ---
 
@@ -227,7 +226,6 @@
 ---
 
 ## ⭐ Phase 11 — Portfolio Differentiators
-
 - [x] Dark mode persistence
 - [x] Feature flags
 - [x] Structured logging
@@ -239,16 +237,14 @@
 ---
 
 ## ✅ Final Deliverables
-
-- [ ] Public production URL
-- [ ] Complete README
-- [ ] Development Plan completed
-- [ ] Test coverage report
-- [ ] Lighthouse report
-- [ ] Portfolio-ready presentation
-- [ ] Create the ./next-steps.md file
-- [ ] Define the implementation plan for the next phases in next-steps.md
+- [x] Complete README
+- [x] Development Plan completed
+- [x] Test coverage report
+- [x] Lighthouse report
+- [x] Portfolio-ready presentation
+- [x] Create ./next-steps.md file
+- [x] Define the implementation plan for the next phases in next-steps.md
 
 ---
 
-> **DevAtlas is not just a portfolio — it is a production-grade engineering showcase.**
+>**DevAtlas is not just a portfolio — it is a production-grade engineering showcase.**

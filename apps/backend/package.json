@@ -1,6 +1,6 @@
 {
   "name": "@dev-atlas/backend",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "type": "module",
   "private": true,
   "description": "",
@@ -90,6 +90,7 @@
     "globals": "^17.0.0",
     "jest": "^30.2.0",
     "prisma": "^7.2.0",
+    "supertest": "^7.2.2",
     "ts-jest": "^29.4.6",
     "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",

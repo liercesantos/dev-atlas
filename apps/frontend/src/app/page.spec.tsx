@@ -28,4 +28,9 @@ describe('HomePage', () => {
     render(<HomePage />)
     expect(screen.getByTestId('theme-toggle')).toBeInTheDocument()
   })
+
+  it('matches snapshot', () => {
+    const { asFragment } = render(<HomePage />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 })
