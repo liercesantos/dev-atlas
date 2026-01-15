@@ -32,6 +32,7 @@ import { CacheControlInterceptor } from './shared/interceptors/cache-control.int
         JWT_ACCESS_EXPIRATION: Joi.string().default('15m'),
         JWT_REFRESH_SECRET: Joi.string().required(),
         JWT_REFRESH_EXPIRATION: Joi.string().default('7d'),
+        FRONTEND_URL: Joi.string().default('http://localhost:3000'),
       }),
     }),
     LoggerModule.forRootAsync({

@@ -12,7 +12,7 @@ async function getProjects() {
   // Mocking for demonstration
   return [
     { id: '1', title: 'DevAtlas', description: 'This very platform.' },
-    { id: '2', title: 'Portfolio Pro', description: 'An older portfolio project.' },
+    { id: '2', title: 'DevTrack', description: 'Plataforma web para gestão de projetos, tarefas e métricas de produtividade, inspirada em ferramentas como Jira/Trello, porém com foco técnico e arquitetural.' },
   ];
 }
 
