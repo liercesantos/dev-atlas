@@ -1,3 +1,9 @@
+## [1.0.0-beta.4](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2026-01-15)
+
+### Features
+
+* **frontend:** add feature flag components and hooks with tests ([61f55a7](https://github.com/liercesantos/dev-atlas/commit/61f55a7be077f6502794ad4d4002cec4a04e391a))
+
 ## [1.0.0-beta.3](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2026-01-15)
 
 ### Features
