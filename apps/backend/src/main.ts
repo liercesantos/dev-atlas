@@ -1,28 +1,16 @@
-import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { ValidationPipe, Logger, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { Logger } from 'nestjs-pino';
-import cookieParser from 'cookie-parser';
-import * as Sentry from '@sentry/nestjs';
+import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
-  app.useLogger(app.get(Logger));
+  const logger = new Logger('Bootstrap');
+  const app = await NestFactory.create(AppModule);
 
   const configService = app.get(ConfigService);
-
-  // Sentry
-  const sentryDsn = configService.get<string>('SENTRY_DSN');
-  if (sentryDsn) {
-    Sentry.init({
-      dsn: sentryDsn,
-      environment: configService.get('NODE_ENV'),
-    });
-  }
   const port = configService.get<number>('PORT', 3001);
 
   // Cookie Parser
@@ -41,11 +29,7 @@ async function bootstrap() {
   );
 
   // CORS
-  const frontendUrl = configService.get<string>('FRONTEND_URL');
-  app.enableCors({
-    origin: frontendUrl?.split(','),
-    credentials: true,
-  });
+  app.enableCors();
 
   // API Versioning
   app.enableVersioning({
@@ -59,27 +43,15 @@ async function bootstrap() {
   // Swagger
   const config = new DocumentBuilder()
     .setTitle('DevAtlas API')
-    .setDescription(
-      'The DevAtlas API documentation. This API provides endpoints for managing projects, blog posts, and user authentication.',
-    )
+    .setDescription('The DevAtlas API documentation')
     .setVersion('1.0')
     .addBearerAuth()
-    .addCookieAuth('refresh_token')
-    .addTag('auth', 'Authentication and token management')
-    .addTag('projects', 'Project CRUD and listings')
-    .addTag('blog', 'Blog post management')
-    .addTag('health', 'System health and status')
-    .addTag('FeatureFlags', 'Feature toggle configuration')
+    .addCookieAuth('refreshToken')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document, {
-    swaggerOptions: {
-      persistAuthorization: true,
-    },
-  });
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(port);
-  const logger = app.get(Logger);
   logger.log(`Application is running on: http://localhost:${port}/api`);
   logger.log(`Swagger documentation: http://localhost:${port}/docs`);
 }

@@ -24,17 +24,14 @@ dev-atlas/
 ├── docs/                      # Architecture & technical docs
 │   ├── adr/                   # Architecture Decision Records
 │   ├── diagrams/              # Architecture diagrams
-│   ├── differentiators.md
-│   ├── performance.md
-│   ├── project-structure.md
-│   └── github-issues.md
+│   ├── dev-plan.md
+│   └── project-structure.md
 │
 ├── .editorconfig
 ├── .gitignore
 ├── package.json
 ├── pnpm-workspace.yaml
-├── dev-plan.md
-├── next-steps.md
+├── turbo.json                 # (optional) Turborepo config
 └── README.md
 ```
 ## ⚛️ Frontend Structure
@@ -203,13 +200,7 @@ docs/
 │   ├── 0002-frontend-architecture.md
 │   ├── 0003-backend-modular-domain-architecture.md
 │   ├── 0004-rest-vs-graphql-api-strategy.md
-│   ├── 0005-authentication-authorization-model.md
-│   ├── 0006-state-management-strategy.md
-│   ├── 0007-testing-strategy.md
-│   ├── 0008-performance-and-caching-strategy.md
-│   ├── 0009-ci-cd-and-release-strategy.md
-│   ├── 0010-structured-logging-and-observability.md
-│   └── 0011-feature-flag-strategy.md
+│   └── 0005-authentication-authorization-model.md
 │
 └── diagrams/
     └── architecture.md

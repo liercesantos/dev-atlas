@@ -1,5 +1,6 @@
+import { PartialType } from '@nestjs/swagger';
 import { CreateProjectDto } from './create-project.dto';
-import { InputType, PartialType } from '@nestjs/graphql';
+import { InputType } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateProjectDto extends PartialType(CreateProjectDto) {}
