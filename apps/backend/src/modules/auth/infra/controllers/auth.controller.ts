@@ -75,6 +75,7 @@ export class AuthController {
   ) {
     await this.authService.logout(userId);
     this.clearCookies(res);
+
     return { message: 'Logged out successfully' };
   }
 
