@@ -1,23 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
-import { Plus, Edit, Trash2 } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import { blogService } from '@/features/blog/services/blog.service';
+import { BlogPostList } from '@/features/blog/components/blog-post-list';
 
 async function getBlogPosts() {
-  // Mocking
-  return [
-    {
-      id: '1',
-      title: 'Building a Production-Ready NestJS API',
-      published: true,
-      createdAt: '2026-01-10'
-    },
-    {
-      id: '2',
-      title: 'Next.js 15: The Future of Frontend',
-      published: true,
-      createdAt: '2026-01-05'
-    },
-  ];
+  try {
+    const { items } = await blogService.getAll();
+    return items;
+  } catch (error) {
+    console.error('Failed to fetch blog posts:', error);
+    return [];
+  }
 }
 
 export default async function AdminBlogPage() {
@@ -38,43 +32,7 @@ export default async function AdminBlogPage() {
         </Link>
       </div>
 
-      <div className="bg-card border rounded-xl overflow-hidden shadow-sm">
-        <table className="w-full text-left">
-          <thead className="bg-muted/50 border-b">
-            <tr>
-              <th className="px-6 py-4 font-semibold">Title</th>
-              <th className="px-6 py-4 font-semibold">Status</th>
-              <th className="px-6 py-4 font-semibold">Date</th>
-              <th className="px-6 py-4 font-semibold text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y">
-            {posts.map((post) => (
-              <tr key={post.id} className="hover:bg-muted/30 transition-colors">
-                <td className="px-6 py-4 font-medium">{post.title}</td>
-                <td className="px-6 py-4">
-                  <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                    post.published ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                  }`}>
-                    {post.published ? 'Published' : 'Draft'}
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-sm text-muted-foreground">{post.createdAt}</td>
-                <td className="px-6 py-4 text-right">
-                  <div className="flex justify-end gap-2">
-                    <button className="p-2 hover:text-primary transition-colors">
-                      <Edit className="w-4 h-4" />
-                    </button>
-                    <button className="p-2 hover:text-destructive transition-colors">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <BlogPostList initialPosts={posts} />
     </div>
   );
 }
