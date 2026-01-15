@@ -1,16 +1,27 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe, Logger, VersioningType } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { Logger } from 'nestjs-pino';
 import * as cookieParser from 'cookie-parser';
+import * as Sentry from '@sentry/nestjs';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
 
 async function bootstrap() {
-  const logger = new Logger('Bootstrap');
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  app.useLogger(app.get(Logger));
 
   const configService = app.get(ConfigService);
+
+  // Sentry
+  const sentryDsn = configService.get<string>('SENTRY_DSN');
+  if (sentryDsn) {
+    Sentry.init({
+      dsn: sentryDsn,
+      environment: configService.get('NODE_ENV'),
+    });
+  }
   const port = configService.get<number>('PORT', 3001);
 
   // Cookie Parser
@@ -52,6 +63,7 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, document);
 
   await app.listen(port);
+  const logger = app.get(Logger);
   logger.log(`Application is running on: http://localhost:${port}/api`);
   logger.log(`Swagger documentation: http://localhost:${port}/docs`);
 }

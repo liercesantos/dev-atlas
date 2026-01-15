@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LazyHeavyComponent } from "@/components/ui/lazy-heavy-component";
+import { Feature } from "@/features/feature-flags/components/feature";
 
 export default function HomePage() {
   return (
@@ -25,12 +26,14 @@ export default function HomePage() {
               >
                 View Projects
               </Link>
-              <Link
-                href="/blog"
-                className="bg-secondary text-secondary-foreground px-6 py-3 rounded-md font-semibold hover:opacity-90 transition-opacity"
-              >
-                Read Blog
-              </Link>
+              <Feature name="ENABLE_BLOG">
+                <Link
+                  href="/blog"
+                  className="bg-secondary text-secondary-foreground px-6 py-3 rounded-md font-semibold hover:opacity-90 transition-opacity"
+                >
+                  Read Blog
+                </Link>
+              </Feature>
             </div>
           </div>
           <div className="relative w-32 h-32 lg:w-48 lg:h-48 mt-8 lg:mt-0">
