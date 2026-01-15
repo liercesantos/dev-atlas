@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../store/AuthContext";
+import { authService } from "../services/auth.service";
 
 interface AuthFormProps {
   type: "login" | "register";
@@ -11,11 +14,37 @@ export function AuthForm({ type }: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { login: setAuth } = useAuth();
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(`${type} attempt with:`, { email, password, name });
-    // Implementation would go here
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      let response;
+      if (type === "login") {
+        response = await authService.login({ email, password });
+      } else {
+        response = await authService.register({ email, password, name });
+      }
+
+      setAuth(response.accessToken, response.user);
+      router.push("/admin");
+    } catch (err: unknown) {
+      if (err && typeof err === 'object' && 'response' in err) {
+        const axiosError = err as { response?: { data?: { message?: string } } };
+        setError(axiosError.response?.data?.message || "Something went wrong. Please try again.");
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -30,6 +59,11 @@ export function AuthForm({ type }: AuthFormProps) {
             : "Fill in the details below to get started"}
         </p>
       </div>
+      {error && (
+        <div className="p-3 text-sm text-red-500 bg-red-50 border border-red-200 rounded-md">
+          {error}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-4">
         {type === "register" && (
           <div className="space-y-2">
@@ -85,9 +119,10 @@ export function AuthForm({ type }: AuthFormProps) {
         </div>
         <button
           type="submit"
+          disabled={isLoading}
           className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
         >
-          {type === "login" ? "Sign In" : "Sign Up"}
+          {isLoading ? "Processing..." : type === "login" ? "Sign In" : "Sign Up"}
         </button>
       </form>
       <div className="text-center text-sm">

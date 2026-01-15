@@ -19,7 +19,7 @@ export class AuthService {
     const user = await this.usersService.create(registerDto);
     const tokens = await this.getTokens(user.id, user.email, user.role);
     await this.usersService.updateRefreshToken(user.id, tokens.refreshToken);
-    return tokens;
+    return { tokens, user };
   }
 
   async login(loginDto: LoginDto) {
@@ -41,7 +41,7 @@ export class AuthService {
     const tokens = await this.getTokens(user.id, user.email, user.role);
     await this.usersService.updateRefreshToken(user.id, tokens.refreshToken);
 
-    return tokens;
+    return { tokens, user };
   }
 
   async logout(userId: string) {

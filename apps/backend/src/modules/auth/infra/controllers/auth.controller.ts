@@ -3,18 +3,21 @@ import {
   Controller,
   HttpCode,
   HttpStatus,
+  Get,
   Post,
   Res,
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { ApiTags, ApiOperation, ApiResponse, ApiCookieAuth } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiCookieAuth, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from '../../application/services/auth.service';
 import { LoginDto } from '../../application/dto/login.dto';
 import { RegisterDto } from '../../application/dto/register.dto';
+import { AtGuard } from '../guards/at.guard';
 import { RtGuard } from '../guards/rt.guard';
 import { Public } from '@/shared/decorators/public.decorator';
 import { GetUser } from '@/shared/decorators/get-user.decorator';
+import { User } from '@/modules/users/domain/entities/user.entity';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -31,9 +34,9 @@ export class AuthController {
     @Body() registerDto: RegisterDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const tokens = await this.authService.register(registerDto);
+    const { tokens, user } = await this.authService.register(registerDto);
     this.setCookies(res, tokens);
-    return { message: 'Registered successfully' };
+    return { message: 'Registered successfully', user, accessToken: tokens.accessToken };
   }
 
   @Public()
@@ -46,9 +49,20 @@ export class AuthController {
     @Body() loginDto: LoginDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const tokens = await this.authService.login(loginDto);
+    const { tokens, user } = await this.authService.login(loginDto);
     this.setCookies(res, tokens);
-    return { message: 'Logged in successfully' };
+    return { message: 'Logged in successfully', user, accessToken: tokens.accessToken };
+  }
+
+  @UseGuards(AtGuard)
+  @Get('me')
+  @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Get current user profile' })
+  @ApiResponse({ status: 200, description: 'User profile retrieved successfully' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async getMe(@GetUser() user: User) {
+    return user;
   }
 
   @Post('logout')

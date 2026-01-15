@@ -8,14 +8,12 @@ export function middleware(request: NextRequest) {
   const isDashboardRoute = pathname.startsWith('/admin') || pathname.startsWith('/dashboard');
   const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/register');
 
-  // For now, we'll just use a placeholder for authentication check
-  // In a real app, you'd check for a session cookie or JWT
-  const isAuthenticated = request.cookies.has('session');
+  // Check for the access_token cookie
+  const isAuthenticated = request.cookies.has('access_token');
 
   if (isDashboardRoute && !isAuthenticated) {
     // Redirect to login if trying to access dashboard while unauthenticated
-    // return NextResponse.redirect(new URL('/login', request.url));
-    // Commented out to avoid locking out during development if no cookie exists
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 
   if (isAuthRoute && isAuthenticated) {

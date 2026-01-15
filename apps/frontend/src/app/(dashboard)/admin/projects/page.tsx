@@ -3,10 +3,14 @@ import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { projectsService } from '@/features/projects/services/projects.service';
 import { ProjectList } from '@/features/projects/components/project-list';
+import { getServerAxios } from '@/lib/api/server-api';
+
+export const dynamic = 'force-dynamic';
 
 async function getProjects() {
   try {
-    const { items } = await projectsService.getAll();
+    const api = await getServerAxios();
+    const { items } = await projectsService.getAll(undefined, api);
     return items;
   } catch (error) {
     console.error('Failed to fetch projects:', error);

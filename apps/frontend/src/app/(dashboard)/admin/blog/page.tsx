@@ -3,10 +3,14 @@ import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { blogService } from '@/features/blog/services/blog.service';
 import { BlogPostList } from '@/features/blog/components/blog-post-list';
+import { getServerAxios } from '@/lib/api/server-api';
+
+export const dynamic = 'force-dynamic';
 
 async function getBlogPosts() {
   try {
-    const { items } = await blogService.getAll();
+    const api = await getServerAxios();
+    const { items } = await blogService.getAll(undefined, api);
     return items;
   } catch (error) {
     console.error('Failed to fetch blog posts:', error);
