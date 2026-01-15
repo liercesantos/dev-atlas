@@ -1,3 +1,10 @@
+## [1.0.0-beta.6](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2026-01-15)
+
+### Features
+
+* **frontend:** add 'Back to' navigation links and update asset references ([60aafa1](https://github.com/liercesantos/dev-atlas/commit/60aafa129c554e3bbf95e85f595e02ba60f112a7))
+* **frontend:** update branded assets, add test annotations, and bump version to 1.1.5 ([8ab1507](https://github.com/liercesantos/dev-atlas/commit/8ab15073372a0f3097787254954dd39f998beb32))
+
 ## [1.0.0-beta.5](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2026-01-15)
 
 ### Features
