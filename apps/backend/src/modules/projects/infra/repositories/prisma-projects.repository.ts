@@ -14,14 +14,8 @@ export class PrismaProjectsRepository implements IProjectsRepository {
     where?: any;
     orderBy?: any;
   }): Promise<Project[]> {
-    try {
-      console.log('Fetching projects');
-      const projects = await this.prisma.project.findMany(params);
-      return projects.map((p) => this.mapToEntity(p));
-    } catch {
-      console.log('Error while fetching projects', params);
-      return [];
-    }
+    const projects = await this.prisma.project.findMany(params);
+    return projects.map((p) => this.mapToEntity(p));
   }
 
   async findById(id: string): Promise<Project | null> {
@@ -54,13 +48,7 @@ export class PrismaProjectsRepository implements IProjectsRepository {
   }
 
   async count(where?: any): Promise<number> {
-    try {
-      console.log('Counting projects');
-      return this.prisma.project.count({ where });
-    } catch {
-      console.log('Error while counting projects');
-      return 0;
-    }
+    return this.prisma.project.count({ where });
   }
 
   private mapToEntity(project: any): Project {

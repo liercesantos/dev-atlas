@@ -5,6 +5,7 @@
 ---
 
 ## 📌 Project Goals
+
 - Demonstrate advanced proficiency in **React.js + Next.js**
 - Use **TypeScript** across the entire stack
 - Build a production-ready **Node.js + NestJS API**
@@ -143,14 +144,14 @@
 - [x] Test reusable components
 - [x] Test custom hooks
 - [x] Test pages (SSR / SSG)
-- [x] Snapshot tests where applicable
+- [ ] Snapshot tests where applicable
 
 ### 6.2 Backend Testing
 - [x] Setup Jest for NestJS
 - [x] Unit tests for services
 - [x] Controller tests
-- [x] Integration tests
-- [x] Test database isolation
+- [ ] Integration tests
+- [ ] Test database isolation
 
 ---
 
@@ -193,58 +194,77 @@
 ## 🔄 Phase 9 — Version Control & CI/CD
 
 ### 9.1 Git Workflow
-- [x] Gitflow branching
-- [x] Feature-based development
-- [x] Pull Request templates
-- [x] Code review checklist
+- [ ] Gitflow branching
+- [ ] Feature-based development
+- [ ] Pull Request templates
+- [ ] Code review checklist
 
 ### 9.2 CI/CD
-- [x] GitHub Actions pipeline
-- [x] Lint and test on PR
-- [x] Build verification
-- [x] Automated releases
-- [x] Environment-based deploys
+- [ ] GitHub Actions pipeline
+- [ ] Lint and test on PR
+- [ ] Build verification
+- [ ] Automated releases
+- [ ] Environment-based deploys
 
 ---
 
 ## 📦 Phase 10 — Product Features
 
 ### 10.1 Public Area
-- [x] Landing page
-- [x] About section
-- [x] Tech stack overview
-- [x] Projects showcase
-- [x] Blog (MDX support)
+- [ ] Landing page
+- [ ] About section
+- [ ] Tech stack overview
+- [ ] Projects showcase
+- [ ] Blog (MDX support)
 
 ### 10.2 Admin Dashboard
-- [x] Authentication-protected routes
-- [x] Project CRUD
-- [x] Blog post management
-- [x] Analytics dashboard
-- [x] Feature toggles
+- [ ] Authentication-protected routes
+- [ ] Project CRUD
+- [ ] Blog post management
+- [ ] Analytics dashboard
+- [ ] Feature toggles
 
 ---
 
-## ⭐ Phase 11 — Portfolio Differentiators
-- [x] Dark mode persistence
-- [x] Feature flags
-- [x] Structured logging
-- [x] Error tracking (e.g., Sentry)
-- [x] Architecture Decision Records (ADR)
-- [x] Technical documentation
-- [x] Performance benchmarks
+## 🚀 Phase 11 — Deployment & Infrastructure
+
+### 11.1 Infrastructure
+- [ ] Dockerize frontend
+- [ ] Dockerize backend
+- [ ] Docker Compose setup
+- [ ] Environment configs
+- [ ] Secrets management
+
+### 11.2 Deployment
+- [ ] Production build
+- [ ] Staging environment
+- [ ] Preview deployments
+- [ ] Monitoring setup
+- [ ] Error tracking
+
+---
+
+## ⭐ Phase 12 — Portfolio Differentiators
+
+- [ ] Dark mode persistence
+- [ ] Feature flags
+- [ ] Structured logging
+- [ ] Error tracking (e.g., Sentry)
+- [ ] Architecture Decision Records (ADR)
+- [ ] Technical documentation
+- [ ] Performance benchmarks
 
 ---
 
 ## ✅ Final Deliverables
-- [x] Complete README
-- [x] Development Plan completed
-- [x] Test coverage report
-- [x] Lighthouse report
-- [x] Portfolio-ready presentation
-- [x] Create ./next-steps.md file
-- [x] Define the implementation plan for the next phases in next-steps.md
+
+- [ ] Public production URL
+- [ ] Complete README
+- [ ] Development Plan completed
+- [ ] Test coverage report
+- [ ] Lighthouse report
+- [ ] Portfolio-ready presentation
 
 ---
 
->**DevAtlas is not just a portfolio — it is a production-grade engineering showcase.**
+> **DevAtlas is not just a portfolio — it is a production-grade engineering showcase.**
