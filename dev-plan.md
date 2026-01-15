@@ -228,13 +228,13 @@
 
 ## ⭐ Phase 11 — Portfolio Differentiators
 
-- [ ] Dark mode persistence
-- [ ] Feature flags
-- [ ] Structured logging
-- [ ] Error tracking (e.g., Sentry)
-- [ ] Architecture Decision Records (ADR)
-- [ ] Technical documentation
-- [ ] Performance benchmarks
+- [x] Dark mode persistence
+- [x] Feature flags
+- [x] Structured logging
+- [x] Error tracking (e.g., Sentry)
+- [x] Architecture Decision Records (ADR)
+- [x] Technical documentation
+- [x] Performance benchmarks
 
 ---
 
@@ -246,6 +246,8 @@
 - [ ] Test coverage report
 - [ ] Lighthouse report
 - [ ] Portfolio-ready presentation
+- [ ] Create the ./next-steps.md file
+- [ ] Define the implementation plan for the next phases in next-steps.md
 
 ---
 

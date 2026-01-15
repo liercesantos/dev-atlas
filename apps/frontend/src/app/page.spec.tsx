@@ -11,6 +11,11 @@ jest.mock('@/components/ui/lazy-heavy-component', () => ({
   LazyHeavyComponent: () => <div data-testid="lazy-heavy-component">Lazy Component</div>,
 }))
 
+// Mock Feature component to avoid dealing with feature flag state in page tests
+jest.mock('@/features/feature-flags/components/feature', () => ({
+  Feature: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+}))
+
 describe('HomePage', () => {
   it('renders the title and welcome message', () => {
     render(<HomePage />)
