@@ -1,3 +1,9 @@
+## [1.0.0-beta.2](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2026-01-15)
+
+### Bug Fixes
+
+* **ci:** fix preview deploy echo quoting ([3752744](https://github.com/liercesantos/dev-atlas/commit/3752744d4258bf3b5218444ff2f05aab677d9493))
+
 ## 1.0.0-beta.1 (2026-01-15)
 
 ### Features
