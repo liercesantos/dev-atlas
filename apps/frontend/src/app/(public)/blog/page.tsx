@@ -1,27 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
+import {getServerAxios} from "@/lib/api/server-api";
+import {blogService} from "@/features/blog/services/blog.service";
 
 // ISR configuration
 export const revalidate = 3600;
 
 async function getBlogPosts() {
-  // Mocking for demonstration
-  return [
-    {
-      id: '1',
-      title: 'Building a Production-Ready NestJS API',
-      slug: 'building-production-ready-nestjs-api',
-      excerpt: 'Learn the best practices for building scalable APIs with NestJS.',
-      date: '2026-01-10'
-    },
-    {
-      id: '2',
-      title: 'Next.js 15: The Future of Frontend',
-      slug: 'nextjs-15-future-of-frontend',
-      excerpt: 'Exploring the new features and improvements in Next.js 15.',
-      date: '2026-01-05'
-    },
-  ];
+  try {
+    const api = await getServerAxios();
+    const { items } = await blogService.getAll(undefined, api);
+    return items;
+  } catch (error) {
+    console.error('Failed to fetch blog posts:', error);
+    return [];
+  }
 }
 
 export default async function BlogPage() {
@@ -41,9 +34,9 @@ export default async function BlogPage() {
               <h2 className="text-2xl font-semibold hover:text-primary transition-colors">
                 <Link href={`/blog/${post.slug}`}>{post.title}</Link>
               </h2>
-              <time className="text-sm text-muted-foreground">{post.date}</time>
+              <time className="text-sm text-muted-foreground">{new Date(post.createdAt).toLocaleDateString()}</time>
             </div>
-            <p className="text-muted-foreground mb-6 leading-relaxed">{post.excerpt}</p>
+            <p className="text-muted-foreground mb-6 leading-relaxed">{post.content}</p>
             <Link href={`/blog/${post.slug}`} className="text-primary font-medium hover:underline">
               Read more →
             </Link>

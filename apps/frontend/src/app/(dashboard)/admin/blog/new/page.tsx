@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { BlogPostForm } from '@/features/blog/components/blog-post-form';
 import { blogService } from '@/features/blog/services/blog.service';
 import { CreateBlogPostDto, UpdateBlogPostDto } from '@/features/blog/types';
+import Link from "next/link";
 
 export default function NewBlogPostPage() {
   const router = useRouter();
@@ -40,6 +41,12 @@ export default function NewBlogPostPage() {
       )}
 
       <BlogPostForm onSubmit={handleSubmit} isLoading={isLoading} />
+
+      <div className="mt-12">
+        <Link href="/admin/blog" className="text-muted-foreground hover:text-primary transition-colors">
+          ← Back to Blogs
+        </Link>
+      </div>
     </div>
   );
 }

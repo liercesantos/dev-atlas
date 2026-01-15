@@ -6,6 +6,7 @@ import { ProjectForm } from '@/features/projects/components/project-form';
 import { projectsService } from '@/features/projects/services/projects.service';
 import { Project, CreateProjectDto, UpdateProjectDto } from '@/features/projects/types';
 import { Button } from '@/components/ui/button';
+import Link from "next/link";
 
 export default function EditProjectPage() {
   const router = useRouter();
@@ -90,6 +91,12 @@ export default function EditProjectPage() {
           isLoading={isSaving}
         />
       )}
+
+      <div className="mt-12">
+        <Link href="/admin/projects" className="text-muted-foreground hover:text-primary transition-colors">
+          ← Back to Projects
+        </Link>
+      </div>
     </div>
   );
 }
