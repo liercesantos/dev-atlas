@@ -22,6 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Check for existing session
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setState({
         user: JSON.parse(storedUser),
         isAuthenticated: true,

@@ -1,13 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
-import { Plus, Edit, Trash2 } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import { projectsService } from '@/features/projects/services/projects.service';
+import { ProjectList } from '@/features/projects/components/project-list';
 
 async function getProjects() {
-  // Mocking
-  return [
-    { id: '1', title: 'DevAtlas', published: true, createdAt: '2026-01-14' },
-    { id: '2', title: 'DevTrack', published: false, createdAt: '2025-12-20' },
-  ];
+  try {
+    const { items } = await projectsService.getAll();
+    return items;
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    return [];
+  }
 }
 
 export default async function AdminProjectsPage() {
@@ -28,43 +32,7 @@ export default async function AdminProjectsPage() {
         </Link>
       </div>
 
-      <div className="bg-card border rounded-xl overflow-hidden shadow-sm">
-        <table className="w-full text-left">
-          <thead className="bg-muted/50 border-b">
-            <tr>
-              <th className="px-6 py-4 font-semibold">Title</th>
-              <th className="px-6 py-4 font-semibold">Status</th>
-              <th className="px-6 py-4 font-semibold">Date</th>
-              <th className="px-6 py-4 font-semibold text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y">
-            {projects.map((project) => (
-              <tr key={project.id} className="hover:bg-muted/30 transition-colors">
-                <td className="px-6 py-4 font-medium">{project.title}</td>
-                <td className="px-6 py-4">
-                  <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                    project.published ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                  }`}>
-                    {project.published ? 'Published' : 'Draft'}
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-sm text-muted-foreground">{project.createdAt}</td>
-                <td className="px-6 py-4 text-right">
-                  <div className="flex justify-end gap-2">
-                    <button className="p-2 hover:text-primary transition-colors">
-                      <Edit className="w-4 h-4" />
-                    </button>
-                    <button className="p-2 hover:text-destructive transition-colors">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ProjectList initialProjects={projects} />
     </div>
   );
 }

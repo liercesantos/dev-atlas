@@ -1,13 +1,13 @@
 import axiosInstance from '@/lib/api/axios';
-import { LoginResponse } from '../types';
+import { LoginResponse, User } from '../types';
 
 export const authService = {
-  async login(credentials: any): Promise<LoginResponse> {
+  async login(credentials: Record<string, unknown>): Promise<LoginResponse> {
     const response = await axiosInstance.post<LoginResponse>('/auth/login', credentials);
     return response.data;
   },
 
-  async register(data: any): Promise<LoginResponse> {
+  async register(data: Record<string, unknown>): Promise<LoginResponse> {
     const response = await axiosInstance.post<LoginResponse>('/auth/register', data);
     return response.data;
   },
@@ -16,8 +16,8 @@ export const authService = {
     await axiosInstance.post('/auth/logout');
   },
 
-  async getMe(): Promise<any> {
-    const response = await axiosInstance.get('/auth/me');
+  async getMe(): Promise<User> {
+    const response = await axiosInstance.get<User>('/auth/me');
     return response.data;
   },
 };
