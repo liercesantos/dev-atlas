@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "private": true,
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "start": "next start",

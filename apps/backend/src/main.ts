@@ -1,9 +1,10 @@
+import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import * as Sentry from '@sentry/nestjs';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
@@ -40,7 +41,11 @@ async function bootstrap() {
   );
 
   // CORS
-  app.enableCors();
+  const frontendUrl = configService.get<string>('FRONTEND_URL');
+  app.enableCors({
+    origin: frontendUrl?.split(','),
+    credentials: true,
+  });
 
   // API Versioning
   app.enableVersioning({

@@ -47,9 +47,12 @@ importers:
       '@apollo/server':
         specifier: ^5.2.0
         version: 5.2.0(graphql@16.12.0)
+      '@as-integrations/express5':
+        specifier: ^1.1.2
+        version: 1.1.2(@apollo/server@5.2.0(graphql@16.12.0))(express@5.2.1)
       '@nestjs/apollo':
         specifier: ^13.2.3
-        version: 13.2.3(@apollo/server@5.2.0(graphql@16.12.0))(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(@nestjs/graphql@13.2.3(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(class-transformer@0.5.1)(class-validator@0.14.3)(graphql@16.12.0)(reflect-metadata@0.2.2))(graphql@16.12.0)
+        version: 13.2.3(@apollo/server@5.2.0(graphql@16.12.0))(@as-integrations/express5@1.1.2(@apollo/server@5.2.0(graphql@16.12.0))(express@5.2.1))(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(@nestjs/graphql@13.2.3(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(class-transformer@0.5.1)(class-validator@0.14.3)(graphql@16.12.0)(reflect-metadata@0.2.2))(graphql@16.12.0)
       '@nestjs/cache-manager':
         specifier: ^3.1.0
         version: 3.1.0(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(cache-manager@7.2.8)(keyv@5.5.5)(rxjs@7.8.2)
@@ -77,6 +80,9 @@ importers:
       '@nestjs/swagger':
         specifier: ^11.2.5
         version: 11.2.5(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)
+      '@prisma/adapter-pg':
+        specifier: ^7.2.0
+        version: 7.2.0
       '@prisma/client':
         specifier: ^7.2.0
         version: 7.2.0(prisma@7.2.0(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3)
@@ -119,6 +125,9 @@ importers:
       passport-jwt:
         specifier: ^4.0.1
         version: 4.0.1
+      pg:
+        specifier: ^8.17.1
+        version: 8.17.1
       pino:
         specifier: ^10.2.0
         version: 10.2.0
@@ -165,6 +174,9 @@ importers:
       '@types/passport-jwt':
         specifier: ^4.0.1
         version: 4.0.1
+      '@types/pg':
+        specifier: ^8.16.0
+        version: 8.16.0
       '@types/supertest':
         specifier: ^6.0.3
         version: 6.0.3
@@ -471,6 +483,13 @@ packages:
 
   '@apollographql/graphql-playground-html@1.6.29':
     resolution: {integrity: sha512-xCcXpoz52rI4ksJSdOCxeOCn2DLocxwHf9dVT/Q90Pte1LX+LY+91SFtJF3KXVHH8kEin+g1KKCQPKBjZJfWNA==}
+
+  '@as-integrations/express5@1.1.2':
+    resolution: {integrity: sha512-BxfwtcWNf2CELDkuPQxi5Zl3WqY/dQVJYafeCBOGoFQjv5M0fjhxmAFZ9vKx/5YKKNeok4UY6PkFbHzmQrdxIA==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@apollo/server': ^4.0.0 || ^5.0.0
+      express: ^5.0.0
 
   '@asamuzakjp/css-color@3.2.0':
     resolution: {integrity: sha512-K1A6z8tS3XsmCMM86xoWdn7Fkdn9m6RSVtocUrJYIwZnFVkng/PvkEoWtOWmP+Scc6saYWHWZYbndEEXxl24jw==}
@@ -1826,6 +1845,9 @@ packages:
     resolution: {integrity: sha512-c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==}
     engines: {node: '>=12'}
 
+  '@prisma/adapter-pg@7.2.0':
+    resolution: {integrity: sha512-euIdQ13cRB2wZ3jPsnDnFhINquo1PYFPCg6yVL8b2rp3EdinQHsX9EDdCtRr489D5uhphcRk463OdQAFlsCr0w==}
+
   '@prisma/client-runtime-utils@7.2.0':
     resolution: {integrity: sha512-dn7oB53v0tqkB0wBdMuTNFNPdEbfICEUe82Tn9FoKAhJCUkDH+fmyEp0ClciGh+9Hp2Tuu2K52kth2MTLstvmA==}
 
@@ -1852,6 +1874,9 @@ packages:
 
   '@prisma/dev@0.17.0':
     resolution: {integrity: sha512-6sGebe5jxX+FEsQTpjHLzvOGPn6ypFQprcs3jcuIWv1Xp/5v6P/rjfdvAwTkP2iF6pDx2tCd8vGLNWcsWzImTA==}
+
+  '@prisma/driver-adapter-utils@7.2.0':
+    resolution: {integrity: sha512-gzrUcbI9VmHS24Uf+0+7DNzdIw7keglJsD5m/MHxQOU68OhGVzlphQRobLiDMn8CHNA2XN8uugwKjudVtnfMVQ==}
 
   '@prisma/engines-version@7.2.0-4.0c8ef2ce45c83248ab3df073180d5eda9e8be7a3':
     resolution: {integrity: sha512-KezsjCZDsbjNR7SzIiVlUsn9PnLePI7r5uxABlwL+xoerurZTfgQVbIjvjF2sVr3Uc0ZcsnREw3F84HvbggGdA==}
@@ -2576,6 +2601,9 @@ packages:
 
   '@types/pg@8.15.6':
     resolution: {integrity: sha512-NoaMtzhxOrubeL/7UZuNTrejB4MPAJ0RpxZqXQf2qXuVlTPuG6Y8p4u9dKRaue4yjmC7ZhzVO2/Yyyn25znrPQ==}
+
+  '@types/pg@8.16.0':
+    resolution: {integrity: sha512-RmhMd/wD+CF8Dfo+cVIy3RR5cl8CyfXQ0tGgW6XBL8L4LM/UTEbNXYRbLwU6w+CgrKBNbrQWt4FUtTfaU5jSYQ==}
 
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
@@ -6116,9 +6144,20 @@ packages:
   perfect-debounce@1.0.0:
     resolution: {integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==}
 
+  pg-cloudflare@1.3.0:
+    resolution: {integrity: sha512-6lswVVSztmHiRtD6I8hw4qP/nDm1EJbKMRhf3HCYaqud7frGysPv7FYJ5noZQdhQtN2xJnimfMtvQq21pdbzyQ==}
+
+  pg-connection-string@2.10.0:
+    resolution: {integrity: sha512-ur/eoPKzDx2IjPaYyXS6Y8NSblxM7X64deV2ObV57vhjsWiwLvUD6meukAzogiOsu60GO8m/3Cb6FdJsWNjwXg==}
+
   pg-int8@1.0.1:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
+
+  pg-pool@3.11.0:
+    resolution: {integrity: sha512-MJYfvHwtGp870aeusDh+hg9apvOe2zmpZJpyt+BMtzUWlVqbhFmMK6bOBXLBUPd7iRtIF9fZplDc7KrPN3PN7w==}
+    peerDependencies:
+      pg: '>=8.0'
 
   pg-protocol@1.11.0:
     resolution: {integrity: sha512-pfsxk2M9M3BuGgDOfuy37VNRRX3jmKgMjcvAcWqNDpZSf4cUmv8HSOl5ViRQFsfARFn0KuUQTgLxVMbNq5NW3g==}
@@ -6126,6 +6165,18 @@ packages:
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
+
+  pg@8.17.1:
+    resolution: {integrity: sha512-EIR+jXdYNSMOrpRp7g6WgQr7SaZNZfS7IzZIO0oTNEeibq956JxeD15t3Jk3zZH0KH8DmOIx38qJfQenoE8bXQ==}
+    engines: {node: '>= 16.0.0'}
+    peerDependencies:
+      pg-native: '>=3.0.1'
+    peerDependenciesMeta:
+      pg-native:
+        optional: true
+
+  pgpass@1.0.5:
+    resolution: {integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -6205,6 +6256,10 @@ packages:
   postgres-array@2.0.0:
     resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
     engines: {node: '>=4'}
+
+  postgres-array@3.0.4:
+    resolution: {integrity: sha512-nAUSGfSDGOaOAEGwqsRY27GPOea7CNipJPOA7lPbdEpx5Kg3qzdP0AaWC5MlhTWV9s4hFX39nomVZ+C4tnGOJQ==}
+    engines: {node: '>=12'}
 
   postgres-bytea@1.0.1:
     resolution: {integrity: sha512-5+5HqXnsZPE65IJZSMkZtURARZelel2oXUEO8rH83VS/hxH5vv1uHquPg5wZs8yMAfdv971IU+kcPUczi7NVBQ==}
@@ -7895,6 +7950,11 @@ snapshots:
     dependencies:
       xss: 1.0.15
 
+  '@as-integrations/express5@1.1.2(@apollo/server@5.2.0(graphql@16.12.0))(express@5.2.1)':
+    dependencies:
+      '@apollo/server': 5.2.0(graphql@16.12.0)
+      express: 5.2.1
+
   '@asamuzakjp/css-color@3.2.0':
     dependencies:
       '@csstools/css-calc': 2.1.4(@csstools/css-parser-algorithms@3.0.5(@csstools/css-tokenizer@3.0.4))(@csstools/css-tokenizer@3.0.4)
@@ -8871,7 +8931,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@nestjs/apollo@13.2.3(@apollo/server@5.2.0(graphql@16.12.0))(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(@nestjs/graphql@13.2.3(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(class-transformer@0.5.1)(class-validator@0.14.3)(graphql@16.12.0)(reflect-metadata@0.2.2))(graphql@16.12.0)':
+  '@nestjs/apollo@13.2.3(@apollo/server@5.2.0(graphql@16.12.0))(@as-integrations/express5@1.1.2(@apollo/server@5.2.0(graphql@16.12.0))(express@5.2.1))(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(@nestjs/graphql@13.2.3(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(class-transformer@0.5.1)(class-validator@0.14.3)(graphql@16.12.0)(reflect-metadata@0.2.2))(graphql@16.12.0)':
     dependencies:
       '@apollo/server': 5.2.0(graphql@16.12.0)
       '@apollo/server-plugin-landing-page-graphql-playground': 4.0.1(@apollo/server@5.2.0(graphql@16.12.0))
@@ -8882,6 +8942,8 @@ snapshots:
       iterall: 1.3.0
       lodash.omit: 4.5.0
       tslib: 2.8.1
+    optionalDependencies:
+      '@as-integrations/express5': 1.1.2(@apollo/server@5.2.0(graphql@16.12.0))(express@5.2.1)
 
   '@nestjs/cache-manager@3.1.0(@nestjs/common@11.1.11(class-transformer@0.5.1)(class-validator@0.14.3)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.11)(cache-manager@7.2.8)(keyv@5.5.5)(rxjs@7.8.2)':
     dependencies:
@@ -9426,6 +9488,14 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
+  '@prisma/adapter-pg@7.2.0':
+    dependencies:
+      '@prisma/driver-adapter-utils': 7.2.0
+      pg: 8.17.1
+      postgres-array: 3.0.4
+    transitivePeerDependencies:
+      - pg-native
+
   '@prisma/client-runtime-utils@7.2.0': {}
 
   '@prisma/client@7.2.0(prisma@7.2.0(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(typescript@5.9.3)':
@@ -9469,6 +9539,10 @@ snapshots:
       zeptomatch: 2.0.2
     transitivePeerDependencies:
       - typescript
+
+  '@prisma/driver-adapter-utils@7.2.0':
+    dependencies:
+      '@prisma/debug': 7.2.0
 
   '@prisma/engines-version@7.2.0-4.0c8ef2ce45c83248ab3df073180d5eda9e8be7a3': {}
 
@@ -10307,9 +10381,15 @@ snapshots:
 
   '@types/pg-pool@2.0.6':
     dependencies:
-      '@types/pg': 8.15.6
+      '@types/pg': 8.16.0
 
   '@types/pg@8.15.6':
+    dependencies:
+      '@types/node': 25.0.8
+      pg-protocol: 1.11.0
+      pg-types: 2.2.0
+
+  '@types/pg@8.16.0':
     dependencies:
       '@types/node': 25.0.8
       pg-protocol: 1.11.0
@@ -14239,7 +14319,16 @@ snapshots:
 
   perfect-debounce@1.0.0: {}
 
+  pg-cloudflare@1.3.0:
+    optional: true
+
+  pg-connection-string@2.10.0: {}
+
   pg-int8@1.0.1: {}
+
+  pg-pool@3.11.0(pg@8.17.1):
+    dependencies:
+      pg: 8.17.1
 
   pg-protocol@1.11.0: {}
 
@@ -14250,6 +14339,20 @@ snapshots:
       postgres-bytea: 1.0.1
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
+
+  pg@8.17.1:
+    dependencies:
+      pg-connection-string: 2.10.0
+      pg-pool: 3.11.0(pg@8.17.1)
+      pg-protocol: 1.11.0
+      pg-types: 2.2.0
+      pgpass: 1.0.5
+    optionalDependencies:
+      pg-cloudflare: 1.3.0
+
+  pgpass@1.0.5:
+    dependencies:
+      split2: 4.2.0
 
   picocolors@1.1.1: {}
 
@@ -14342,6 +14445,8 @@ snapshots:
       source-map-js: 1.2.1
 
   postgres-array@2.0.0: {}
+
+  postgres-array@3.0.4: {}
 
   postgres-bytea@1.0.1: {}
 

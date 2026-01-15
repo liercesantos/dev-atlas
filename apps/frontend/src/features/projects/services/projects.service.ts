@@ -9,10 +9,20 @@ import {
 
 export const projectsService = {
   async getAll(filter?: ProjectFilter): Promise<PaginatedProjects> {
-    const response = await axiosInstance.get<PaginatedProjects>('/projects', {
-      params: filter,
-    });
-    return response.data;
+    try {
+      const response = await axiosInstance.get<PaginatedProjects>('/projects', {
+        params: filter,
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error fetching projects', error);
+      return {
+        items: [],
+        total: 0,
+        skip: 0,
+        take: 0,
+      };
+    }
   },
 
   async getById(id: string): Promise<Project> {
