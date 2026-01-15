@@ -37,6 +37,12 @@ export default async function AdminBlogPage() {
       </div>
 
       <BlogPostList initialPosts={posts} />
+
+      <div className="mt-12">
+        <Link href="/admin" className="text-muted-foreground hover:text-primary transition-colors">
+          ← Back to Dashboard
+        </Link>
+      </div>
     </div>
   );
 }

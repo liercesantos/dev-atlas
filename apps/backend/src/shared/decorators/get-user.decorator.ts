@@ -11,6 +11,7 @@ export const GetUser = createParamDecorator(
       const request = context.switchToHttp().getRequest();
       user = request.user;
     }
+    user.id = user.sub;
 
     if (!data) return user;
     return user ? user[data] : undefined;

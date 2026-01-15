@@ -6,6 +6,7 @@ import { ProjectForm } from '@/features/projects/components/project-form';
 import { projectsService } from '@/features/projects/services/projects.service';
 import { CreateProjectDto, UpdateProjectDto } from '@/features/projects/types';
 import { useState } from 'react';
+import Link from "next/link";
 
 export default function NewProjectPage() {
   const router = useRouter();
@@ -40,6 +41,12 @@ export default function NewProjectPage() {
       )}
 
       <ProjectForm onSubmit={handleSubmit} isLoading={isLoading} />
+
+      <div className="mt-12">
+        <Link href="/admin/projects" className="text-muted-foreground hover:text-primary transition-colors">
+          ← Back to Projects
+        </Link>
+      </div>
     </div>
   );
 }

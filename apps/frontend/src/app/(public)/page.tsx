@@ -38,7 +38,7 @@ export default function HomePage() {
           </div>
           <div className="relative w-32 h-32 lg:w-48 lg:h-48 mt-8 lg:mt-0">
             <Image
-              src="https://via.placeholder.com/200"
+              src="https://liercesantos.com/logo-dark.png"
               alt="DevAtlas Hero"
               fill
               className="rounded-full object-cover border-4 border-primary/20"
