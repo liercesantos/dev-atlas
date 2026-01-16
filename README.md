@@ -82,7 +82,7 @@ DevAtlas follows a **modular, domain-oriented architecture**.
 - **Security:** JWT-based authentication with role-based authorization
 
 Detailed architectural decisions are documented using **Architecture Decision Records (ADR)**. 
-Check out the [ADR directory](/docs/adr) and [Diagrams directory](/docs/diagrams/archtecture.md) for more details.
+Check out the [ADR directory](/docs/adr) and [Diagrams directory](/docs/diagrams/ARCHITECTURE.md) for more details.
 
 ---
 
@@ -194,7 +194,7 @@ pnpm --filter backend start:dev
 - [Development Plan](/dev-plan.md)
 - [Next Steps](/next-steps.md)
 - [Project Structure](/docs/project-structure.md)
-- [Differentiators](/docs/differentiators.md)
+- [Differentiators](/docs/DIFFERENTIATORS.md)
 - [Performance Benchmarks](/docs/performance.md)
 
 ---
