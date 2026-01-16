@@ -34,21 +34,23 @@ Key decisions:
 
 ---
 
-## 🧪 Testing Pyramid
-         ┌──────────────┐
-         │  E2E Tests   │   (Few, slow)
-         └──────────────┘
-      ┌────────────────────┐
-      │ Integration Tests  │   (Some)
-      └────────────────────┘    
-    ┌────────────────────────┐
-    │       Unit Tests       │   (Many, fast)
-    └────────────────────────┘
+## 🧪 Testing Diagram
 
+```mermaid
+flowchart TD
+    E2E["E2E Tests<br/>• Critical User Journeys<br/>• Smoke Tests<br/>• Deployment Confidence"]
+
+    INT["Integration Tests<br/>• Module Integration<br/>• API Contracts<br/>• DB & Auth Flows"]
+
+    UNIT["Unit Tests<br/>• Business Rules<br/>• Components & Hooks<br/>• Utilities"]
+
+    E2E --> INT
+    INT --> UNIT
+```
 - **E2E Tests:** Smoke tests for critical flows
 - **Integration Tests:** High-level integration tests
 - **Unit Tests:** Low-level unit tests
->The testing pyramid is a useful tool to understand the tradeoffs between test types.
+>The testing diagram is a useful tool to understand the tradeoffs between test types.
 
 ---
 

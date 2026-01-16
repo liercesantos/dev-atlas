@@ -8,19 +8,19 @@ Together, they form a living record of how and why the system is designed the wa
 
 ## 📚 ADR Index
 
-|                                                                      ID | Title                                              | Status   |
-|------------------------------------------------------------------------:|----------------------------------------------------|----------|
-|                 **[ADR 0001](/docs/adr/0001-architecture-overview.md)** | Architecture Overview                              | Accepted |
-|                 **[ADR 0002](/docs/adr/0002-frontend-architecture.md)** | Frontend Architecture (App Router + Feature-Based) | Accepted |
-|   **[ADR 0003](/docs/adr/0003-backend-modular-domain-architecture.md)** | Backend Modular & Domain-Oriented Architecture     | Accepted |
-|          **[ADR 0004](/docs/adr/0004-rest-vs-graphql-api-strategy.md)** | REST vs GraphQL API Strategy                       | Accepted |
-|    **[ADR 0005](/docs/adr/0005-authentication-authorization-model.md)** | Authentication & Authorization Model               | Accepted |
-|             **[ADR 0006](/docs/adr/0006-state-management-strategy.md)** | State Management Strategy                          | Accepted |
-|                      **[ADR 0007](/docs/adr/0007-testing-strategy.md)** | Testing Strategy                                   | Accepted |
-|      **[ADR 0008](/docs/adr/0008-performance-and-caching-strategy.md)** | Performance & Caching Strategy                     | Accepted |
-|            **[ADR 0009](/docs/adr/0009-ci-cd-and-release-strategy.md)** | CI/CD & Release Strategy                           | Accepted |
+|                                                                     ID | Title                                              | Status   |
+|-----------------------------------------------------------------------:|----------------------------------------------------|----------|
+|                **[ADR 0001](/docs/adr/0001-architecture-overview.md)** | Architecture Overview                              | Accepted |
+|                **[ADR 0002](/docs/adr/0002-frontend-architecture.md)** | Frontend Architecture (App Router + Feature-Based) | Accepted |
+|  **[ADR 0003](/docs/adr/0003-backend-modular-domain-architecture.md)** | Backend Modular & Domain-Oriented Architecture     | Accepted |
+|         **[ADR 0004](/docs/adr/0004-rest-vs-graphql-api-strategy.md)** | REST vs GraphQL API Strategy                       | Accepted |
+|   **[ADR 0005](/docs/adr/0005-authentication-authorization-model.md)** | Authentication & Authorization Model               | Accepted |
+|            **[ADR 0006](/docs/adr/0006-state-management-strategy.md)** | State Management Strategy                          | Accepted |
+|                     **[ADR 0007](/docs/adr/0007-testing-strategy.md)** | Testing Strategy                                   | Accepted |
+|     **[ADR 0008](/docs/adr/0008-performance-and-caching-strategy.md)** | Performance & Caching Strategy                     | Accepted |
+|           **[ADR 0009](/docs/adr/0009-ci-cd-and-release-strategy.md)** | CI/CD & Release Strategy                           | Accepted |
 | **[ADR 0010](/docs/adr/0010-structured-logging-and-observability.md)** | Structured Logging & Observability                 | Accepted |
-|               **[ADR 0011](/docs/adr/0011-feature-flag-strategy.md)** | Feature Flag Strategy                              | Accepted |
+|                **[ADR 0011](/docs/adr/0011-feature-flag-strategy.md)** | Feature Flag Strategy                              | Accepted |
 
 ---
 
