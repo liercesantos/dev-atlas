@@ -1,3 +1,20 @@
+## [1.0.0-beta.6](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2026-01-15)
+
+### Features
+
+* **frontend:** add 'Back to' navigation links and update asset references ([60aafa1](https://github.com/liercesantos/dev-atlas/commit/60aafa129c554e3bbf95e85f595e02ba60f112a7))
+* **frontend:** update branded assets, add test annotations, and bump version to 1.1.5 ([8ab1507](https://github.com/liercesantos/dev-atlas/commit/8ab15073372a0f3097787254954dd39f998beb32))
+
+## [1.0.0-beta.5](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2026-01-15)
+
+### Features
+
+* **auth:** implement end-to-end authentication flow with secure API integration ([7d18a26](https://github.com/liercesantos/dev-atlas/commit/7d18a26f31e8003d0f0234cef0a0e217e102865d))
+* **backend/frontend:** enhance Swagger docs and add comprehensive API metadata ([e92d94d](https://github.com/liercesantos/dev-atlas/commit/e92d94de3c9984c633f0f223916ec3972a3b96b5))
+* **backend:** integrate Prisma PostgreSQL adapter, enhance CORS, and update GraphQL implementation ([0bc6144](https://github.com/liercesantos/dev-atlas/commit/0bc614468fe20f6a71096a4027be72b7413b9285))
+* **frontend:** implement reusable blog management components with CRUD support ([231c85c](https://github.com/liercesantos/dev-atlas/commit/231c85cc3767450a21fd2ae923e8bf91c1c3cc85))
+* **frontend:** refactor project admin module with reusable components and CRUD enhancements ([a152c23](https://github.com/liercesantos/dev-atlas/commit/a152c234d1fe1869caf56b82d1cd1b99089889c5))
+
 ## [1.0.0-beta.4](https://github.com/liercesantos/dev-atlas/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2026-01-15)
 
 ### Features
